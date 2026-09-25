@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight, CheckCircle2, X, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, CheckCircle2, X } from "lucide-react";
 
 interface ProjectItem {
   id: string;
@@ -13,7 +14,9 @@ interface ProjectItem {
   summary: string;
   features: string[];
   tech: string;
+  image: string;
 }
+
 
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -36,6 +39,7 @@ export default function Portfolio() {
         "Laporan Laba Kotor & Bersih Otomatis",
       ],
       tech: "Next.js · PostgreSQL · Tailwind · Thermal SDK",
+      image: "/images/system-pos.jpg",
     },
     {
       id: "company-cms",
@@ -53,6 +57,7 @@ export default function Portfolio() {
         "Teroptimasi SEO Google Page 1 Ready",
       ],
       tech: "React · Next.js · Node.js · Cloudflare",
+      image: "/images/service-web.jpg",
     },
     {
       id: "lms-kursus",
@@ -70,6 +75,7 @@ export default function Portfolio() {
         "Integrasi Pembayaran Otomatis Midtrans",
       ],
       tech: "Next.js · PostgreSQL · Tailwind · AWS S3",
+      image: "/images/system-lms.jpg",
     },
     {
       id: "mobile-order",
@@ -87,6 +93,7 @@ export default function Portfolio() {
         "Bisa Diinstall di Android & iOS",
       ],
       tech: "Flutter · Firebase · REST API",
+      image: "/images/service-mobile.jpg",
     },
     {
       id: "pms-properti",
@@ -104,6 +111,7 @@ export default function Portfolio() {
         "Portal Khusus Penyewa untuk Bukti Transfer",
       ],
       tech: "Next.js · PostgreSQL · WA Gateway API",
+      image: "/images/system-pms.jpg",
     },
     {
       id: "uiux-redesign",
@@ -121,8 +129,10 @@ export default function Portfolio() {
         "Mendukung Tampilan Dark Mode & Light Mode",
       ],
       tech: "Figma · Design System · User Flow",
+      image: "/images/service-uiux.jpg",
     },
   ];
+
 
   const categories = [
     { id: "all", label: "Semua Proyek" },
@@ -177,25 +187,36 @@ export default function Portfolio() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="p-6 rounded-2xl bg-[#141414] border border-[#262626] hover:border-[#FFD700]/50 transition-all duration-300 flex flex-col justify-between group hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
+              className="rounded-2xl bg-[#141414] border border-[#262626] hover:border-[#FFD700]/50 transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(0,0,0,0.5)]"
             >
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-2.5 py-0.5 rounded-md bg-[#202020] text-[10px] font-semibold text-[#FFE873]">
+              {/* Project Photo */}
+              <div className="relative h-48 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-[#141414]/30 to-transparent" />
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                  <span className="px-2.5 py-0.5 rounded-md bg-black/60 backdrop-blur-sm text-[10px] font-semibold text-[#FFE873]">
                     {item.categoryLabel}
                   </span>
-                  <span className="text-[11px] text-[#7A7A7A]">{item.client}</span>
+                  <span className="text-[11px] text-white/70 bg-black/50 backdrop-blur-sm px-2 py-0.5 rounded">{item.client}</span>
                 </div>
+              </div>
 
+              <div className="p-5 flex flex-col flex-1">
                 <h3 className="text-base font-bold text-white group-hover:text-[#FFE873] transition-colors font-[family-name:var(--font-heading)]">
                   {item.title}
                 </h3>
-                <p className="text-xs text-[#888888] mt-2 leading-relaxed">
+                <p className="text-xs text-[#888888] mt-2 leading-relaxed line-clamp-2">
                   {item.summary}
                 </p>
 
                 {/* Features Mini List */}
-                <div className="mt-4 pt-3 border-t border-[#222222] space-y-1.5">
+                <div className="mt-4 pt-3 border-t border-[#222222] space-y-1.5 flex-1">
                   {item.features.slice(0, 3).map((f, i) => (
                     <div key={i} className="flex items-start gap-1.5 text-xs text-[#CCCCCC]">
                       <CheckCircle2 className="w-3.5 h-3.5 text-[#2ECC71] mt-0.5 shrink-0" />
@@ -203,7 +224,6 @@ export default function Portfolio() {
                     </div>
                   ))}
                 </div>
-              </div>
 
               {/* Bottom Action */}
               <div className="mt-5 pt-3 border-t border-[#222222] flex items-center justify-between">
@@ -217,6 +237,7 @@ export default function Portfolio() {
                   <span>Detail</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
+              </div>
               </div>
             </div>
           ))}

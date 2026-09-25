@@ -109,17 +109,21 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
 
             {/* Service Tags */}
             <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-2 text-xs">
-              <span className="px-2.5 py-1 rounded-md bg-[#161616] border border-[#2A2A2A] text-[#A3A3A3]">
-                🌐 Website
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] border border-[#2A2A2A] text-[#A3A3A3]">
+                <Globe className="w-3.5 h-3.5" />
+                Website
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-[#161616] border border-[#2A2A2A] text-[#A3A3A3]">
-                📱 Mobile Apps
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] border border-[#2A2A2A] text-[#A3A3A3]">
+                <Smartphone className="w-3.5 h-3.5" />
+                Mobile Apps
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-[#161616] border border-[#2A2A2A] text-[#A3A3A3]">
-                🎨 UI/UX Design
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] border border-[#2A2A2A] text-[#A3A3A3]">
+                <Layout className="w-3.5 h-3.5" />
+                UI/UX Design
               </span>
-              <span className="px-2.5 py-1 rounded-md bg-[#161616] border border-[#FFD700]/30 text-[#FFE873]">
-                ⚡ Custom System (POS / CMS / LMS / PMS)
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-[#161616] border border-[#FFD700]/30 text-[#FFE873]">
+                <Layers className="w-3.5 h-3.5" />
+                Custom System (POS / CMS / LMS / PMS)
               </span>
             </div>
           </div>

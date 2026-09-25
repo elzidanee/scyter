@@ -1,29 +1,29 @@
-import { ShoppingCart, FileText, GraduationCap, Building2, CheckCircle2 } from "lucide-react";
+import Image from "next/image";
+
+const systems = [
+  {
+    image: "/images/system-pos.jpg",
+    name: "Sistem Kasir (POS)",
+    desc: "Kasir toko, cafe, resto, multi-cabang & stok barcode.",
+  },
+  {
+    image: "/images/system-cms.jpg",
+    name: "Custom CMS",
+    desc: "Portal perusahaan, artikel, blog & katalog produk dinamis.",
+  },
+  {
+    image: "/images/system-lms.jpg",
+    name: "LMS Kursus & Edukasi",
+    desc: "Platform belajar online, video materi, ujian & sertifikat.",
+  },
+  {
+    image: "/images/system-pms.jpg",
+    name: "PMS Properti & Proyek",
+    desc: "Sistem manajemen sewa kos, hotel, hingga timeline proyek.",
+  },
+];
 
 export default function TrustBar() {
-  const systems = [
-    {
-      icon: ShoppingCart,
-      name: "Sistem Kasir (POS)",
-      desc: "Kasir toko, cafe, resto, multi-cabang & stok barcode.",
-    },
-    {
-      icon: FileText,
-      name: "Custom CMS",
-      desc: "Portal perusahaan, artikel, blog & katalog produk dinamis.",
-    },
-    {
-      icon: GraduationCap,
-      name: "LMS Kursus & Edukasi",
-      desc: "Platform belajar online, video materi, ujian & sertifikat.",
-    },
-    {
-      icon: Building2,
-      name: "PMS Properti & Proyek",
-      desc: "Sistem manajemen sewa kos, hotel, hingga timeline proyek.",
-    },
-  ];
-
   return (
     <section id="custom-systems" className="py-12 bg-[#121212] border-y border-[#262626]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -37,22 +37,31 @@ export default function TrustBar() {
             </h2>
           </div>
           <p className="text-xs text-[#888888] max-w-sm">
-            Tanpa biaya bulanan berlangganan yang mahal. Sistem dibangun sesuai kebutuhan unik Anda dan 100% jadi milik Anda.
+            Tanpa biaya langganan bulanan. Sistem dibangun sesuai kebutuhan unik Anda dan 100% jadi milik Anda.
           </p>
         </div>
 
-        {/* 4 Systems Grid */}
+        {/* 4 Systems Grid with Photos */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {systems.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-[#161616] border border-[#2A2A2A] hover:border-[#FFD700]/50 transition-all duration-300 hover:-translate-y-1 group"
-              >
-                <div className="w-9 h-9 rounded-lg bg-[#202020] border border-[#333333] flex items-center justify-center mb-3 group-hover:border-[#FFD700]/50 transition-colors">
-                  <Icon className="w-4 h-4 text-[#FFD700]" />
-                </div>
+          {systems.map((item, idx) => (
+            <div
+              key={idx}
+              className="rounded-xl overflow-hidden bg-[#161616] border border-[#2A2A2A] hover:border-[#FFD700]/50 transition-all duration-300 hover:-translate-y-1 group"
+            >
+              {/* Photo */}
+              <div className="relative h-36 overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.name}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 640px) 100vw, 25vw"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-[#161616]/50 to-transparent" />
+              </div>
+
+              {/* Text */}
+              <div className="p-4">
                 <h3 className="text-sm font-bold text-white group-hover:text-[#FFE873] transition-colors">
                   {item.name}
                 </h3>
@@ -60,8 +69,8 @@ export default function TrustBar() {
                   {item.desc}
                 </p>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
     </section>
