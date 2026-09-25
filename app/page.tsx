@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechMarquee from "@/components/TechMarquee";
 import Services from "@/components/Services";
+import FeaturesShowcase from "@/components/FeaturesShowcase";
 import Portfolio from "@/components/Portfolio";
 import ProjectEstimator from "@/components/ProjectEstimator";
 import Methodology from "@/components/Methodology";
@@ -42,7 +43,10 @@ export default function Home() {
         {/* 3. Core Services: Web, Mobile, UI/UX, & Custom Systems */}
         <Services />
 
-        {/* 4. Portfolio: Real Case Studies & Proof of Work */}
+        {/* 4. 3D Illustrated Architecture & Ownership Showcase (Reference Style) */}
+        <FeaturesShowcase />
+
+        {/* 5. Portfolio: Real Case Studies & Proof of Work */}
         <Portfolio />
 
         {/* 5. Project Estimator: Transparent Timeline & Cost Calculator */}

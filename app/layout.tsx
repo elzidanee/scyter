@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Plus_Jakarta_Sans } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -78,6 +79,7 @@ export default function RootLayout({
     >
       <body className="min-h-screen bg-[#0D0D0D] text-white font-[family-name:var(--font-body)] antialiased selection:bg-[#FFD700] selection:text-[#0D0D0D]">
         {children}
+        <Analytics />
       </body>
     </html>
   );
