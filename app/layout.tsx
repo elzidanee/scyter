@@ -40,8 +40,12 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "ScyterCorp Engineering Team" }],
   icons: {
-    icon: "/logo.png",
-    apple: "/logo.png",
+    icon: [
+      { url: "/icon.png", type: "image/png" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    apple: "/apple-icon.png",
   },
   openGraph: {
     title: "ScyterCorp — Enterprise Software House & Digital Solutions",
