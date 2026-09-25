@@ -23,9 +23,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
 
   const navLinks = [
     { label: "Layanan", href: "#services" },
-    { label: "Sistem Kustom", href: "#custom-systems" },
-    { label: "Estimator", href: "#estimator" },
     { label: "Portofolio", href: "#portfolio" },
+    { label: "Estimasi Biaya", href: "#estimator" },
     { label: "Alur Kerja", href: "#methodology" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -75,8 +74,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
           {/* 3. Right: Status Badge & Single-Line CTA Button */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
             <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#161616] border border-[#2A2A2A] text-xs font-medium text-[#A3A3A3] whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-[#2ECC71] animate-pulse" />
-              <span>Available for Sprints</span>
+              <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
+              <span>Menerima Proyek Baru</span>
             </div>
 
             <button
@@ -114,8 +113,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
       {mobileMenuOpen && (
         <div className="md:hidden bg-[#121212]/98 backdrop-blur-2xl border-b border-[#2A2A2A] px-5 py-6 mt-3 space-y-4 shadow-2xl">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] text-xs font-medium text-[#A3A3A3] w-fit">
-            <span className="w-2 h-2 rounded-full bg-[#2ECC71] animate-pulse" />
-            <span>Menerima Proyek Baru (Q4/Q1)</span>
+            <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
+            <span>Menerima Proyek Baru</span>
           </div>
 
           <div className="space-y-1">

@@ -4,13 +4,10 @@ import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import TechMarquee from "@/components/TechMarquee";
-import TrustBar from "@/components/TrustBar";
 import Services from "@/components/Services";
-import StatsBento from "@/components/StatsBento";
-import ProjectEstimator from "@/components/ProjectEstimator";
 import Portfolio from "@/components/Portfolio";
+import ProjectEstimator from "@/components/ProjectEstimator";
 import Methodology from "@/components/Methodology";
-import Guarantees from "@/components/Guarantees";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -34,39 +31,30 @@ export default function Home() {
       {/* Sticky Global Navigation */}
       <Navbar onOpenConsultation={handleOpenConsultation} />
 
-      {/* Main Content Sections */}
+      {/* Main Content Sections - Clean, Professional & Linear */}
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* 1. Hero: Clear Value Proposition & Engineering Commitments */}
         <Hero onOpenConsultation={handleOpenConsultation} />
 
-        {/* 21st.dev Infinite Slider Marquee for Enterprise Tech Ecosystem */}
+        {/* 2. Tech Stack: Curated Modern Enterprise Foundation */}
         <TechMarquee />
 
-        {/* Custom Systems Showcase (POS, CMS, LMS, PMS) */}
-        <TrustBar />
-
-        {/* 4 Core Services with Real Device Mockups: Web, App, UI/UX, Custom System */}
+        {/* 3. Core Services: Web, Mobile, UI/UX, & Custom Systems */}
         <Services />
 
-        {/* 21st.dev Stats Bento Grid with Animated Numbers & Spotlight Glow */}
-        <StatsBento />
-
-        {/* Real-World Case Studies & Portfolio */}
+        {/* 4. Portfolio: Real Case Studies & Proof of Work */}
         <Portfolio />
 
-        {/* Interactive Estimator Calculator */}
+        {/* 5. Project Estimator: Transparent Timeline & Cost Calculator */}
         <ProjectEstimator onProceedToForm={handleProceedToForm} />
 
-        {/* 21st.dev Inspired Step-by-Step Interactive Timeline */}
+        {/* 6. Methodology: Disciplined 4-Stage Development Workflow */}
         <Methodology />
 
-        {/* 4 Guarantees */}
-        <Guarantees />
-
-        {/* Clean Interactive FAQ */}
+        {/* 7. FAQ: Clear Answers to Client Questions */}
         <FAQ />
 
-        {/* Direct Consultation Form & WhatsApp Quick Connect */}
+        {/* 8. Contact: Direct WhatsApp & Consultation Form */}
         <ContactSection initialSummary={inquirySummary} />
       </main>
 

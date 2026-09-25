@@ -10,24 +10,24 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-5">
             <Link href="/" className="inline-block">
-              <div className="relative h-11 w-52">
+              <div className="relative h-10 w-48">
                 <Image
                   src="/logo2.png"
-                  alt="ScyterCorp Wordmark"
+                  alt="ScyterCorp"
                   fill
                   className="object-contain object-left"
                 />
               </div>
             </Link>
             <p className="text-xs sm:text-sm text-[#888888] leading-relaxed max-w-sm">
-              ScyterCorp adalah software house yang merekayasa sistem perangkat lunak kritis berkinerja tinggi, arsitektur cloud terdistribusi, dan automasi AI untuk perusahaan terkemuka.
+              ScyterCorp adalah software house yang merekayasa website performa tinggi, aplikasi mobile, dan sistem bisnis kustom dengan kepemilikan kode 100% tanpa biaya sewa tersembunyi.
             </p>
 
             {/* Operational Status */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#141414] border border-[#282828] text-xs">
-              <span className="w-2 h-2 rounded-full bg-[#2ECC71] animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
               <span className="text-[#CCCCCC] font-mono text-[11px]">
-                All Systems Operational · SLA 99.99%
+                Malang, Indonesia · Menerima Proyek Baru
               </span>
             </div>
 
@@ -77,46 +77,46 @@ export default function Footer() {
             <ul className="space-y-2 text-xs">
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  Web & SaaS Development
+                  Pembuatan Website Modern
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  High-Performance Mobile Apps
+                  Aplikasi Mobile (iOS & Android)
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  Cloud Infrastructure & DevOps
+                  UI/UX & Interactive Prototyping
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  AI & Machine Learning Engine
+                  Sistem Kasir (POS) & Inventaris
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  Legacy System Modernization
+                  Headless CMS & Portal Berita
                 </a>
               </li>
               <li>
                 <a href="#services" className="hover:text-white transition-colors">
-                  UI/UX & Design Systems
+                  LMS Edukasi & PMS Properti
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Nav Column 2: Solusi & Fitur */}
+          {/* Nav Column 2: Eksplorasi */}
           <div className="space-y-3">
             <h4 className="text-xs font-bold uppercase tracking-wider text-white">
               Eksplorasi
             </h4>
             <ul className="space-y-2 text-xs">
               <li>
-                <a href="#solutions" className="hover:text-white transition-colors">
-                  Solusi Lintas Industri
+                <a href="#portfolio" className="hover:text-white transition-colors">
+                  Studi Kasus & Portofolio
                 </a>
               </li>
               <li>
@@ -125,23 +125,18 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#portfolio" className="hover:text-white transition-colors">
-                  Studi Kasus & Portofolio
-                </a>
-              </li>
-              <li>
                 <a href="#methodology" className="hover:text-white transition-colors">
-                  Metodologi 4-Tahap
-                </a>
-              </li>
-              <li>
-                <a href="#techstack" className="hover:text-white transition-colors">
-                  Teknologi & Tech Stack
+                  Alur Kerja 4-Tahap
                 </a>
               </li>
               <li>
                 <a href="#faq" className="hover:text-white transition-colors">
                   Tanya Jawab (FAQ)
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="hover:text-white transition-colors">
+                  Konsultasi Proyek
                 </a>
               </li>
             </ul>
@@ -155,7 +150,7 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#888888]">
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#FFD700] mt-0.5 shrink-0" />
-                <span>Malang, Indonesia</span>
+                <span>Malang, Jawa Timur, Indonesia</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#FFD700] shrink-0" />
@@ -180,7 +175,7 @@ export default function Footer() {
 
         {/* Bottom legal line */}
         <div className="pt-8 border-t border-[#1C1C1C] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#666666]">
-          <p>© 2026 PT Scyter Digital Nusantara (ScyterCorp). All rights reserved.</p>
+          <p>© 2026 ScyterCorp. All rights reserved.</p>
           <div className="flex items-center gap-6">
             <span className="hover:text-[#A3A3A3] cursor-pointer">Kebijakan Privasi</span>
             <span className="hover:text-[#A3A3A3] cursor-pointer">Syarat & Ketentuan</span>
