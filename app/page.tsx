@@ -8,9 +8,7 @@ import Services from "@/components/Services";
 import ProjectEstimator from "@/components/ProjectEstimator";
 import Portfolio from "@/components/Portfolio";
 import Methodology from "@/components/Methodology";
-import TechStack from "@/components/TechStack";
 import Guarantees from "@/components/Guarantees";
-import Testimonials from "@/components/Testimonials";
 import FAQ from "@/components/FAQ";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
@@ -36,37 +34,31 @@ export default function Home() {
 
       {/* Main Content Sections */}
       <main className="flex-1">
-        {/* Hero Section with Interactive Engineering Cockpit Terminal */}
+        {/* Hero Section */}
         <Hero onOpenConsultation={handleOpenConsultation} />
 
-        {/* Industry Trust & Regulatory Compliance Standards */}
+        {/* Custom Systems Showcase (POS, CMS, LMS, PMS) */}
         <TrustBar />
 
-        {/* Core Services with Detailed Deliverables & Timelines */}
+        {/* 4 Core Services: Web, App, UI/UX, Custom System */}
         <Services />
 
-        {/* Interactive Project Cost & Timeline Estimator (Huge Conversion Driver) */}
+        {/* Interactive Estimator Calculator */}
         <ProjectEstimator onProceedToForm={handleProceedToForm} />
 
-        {/* Real-World Case Studies & Portfolio with Impact Metrics */}
+        {/* Real-World Case Studies & Portfolio */}
         <Portfolio />
 
-        {/* The 4-Step Engineering Methodology & Zero Technical Debt Standard */}
+        {/* 4-Step Methodology */}
         <Methodology />
 
-        {/* Categorized Production-Grade Tech Stack */}
-        <TechStack />
-
-        {/* 4 Ironclad Guarantees: 100% IP Ownership, Strict NDA, Warranty, Milestone Billing */}
+        {/* 4 Guarantees */}
         <Guarantees />
 
-        {/* Executive Testimonials from Tech Leaders */}
-        <Testimonials />
-
-        {/* Comprehensive Interactive FAQ */}
+        {/* Clean Interactive FAQ */}
         <FAQ />
 
-        {/* Direct Technical Consultation Form & WhatsApp Quick Connect */}
+        {/* Direct Consultation Form & WhatsApp Quick Connect */}
         <ContactSection initialSummary={inquirySummary} />
       </main>
 

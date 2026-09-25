@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#0A0A0A" />
+    </linearGradient>
+    <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBE6" />
+      <stop offset="50%" stop-color="#FFE873" />
+      <stop offset="100%" stop-color="#FFD700" />
+    </linearGradient>
+    <linearGradient id="blueGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3B82F6" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#3B82F6" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad2)" />
+  <circle cx="200" cy="100" r="160" fill="url(#blueGlow)" filter="blur(50px)" />
+  <circle cx="650" cy="350" r="150" fill="#FFD700" fill-opacity="0.08" filter="blur(50px)" />
+
+  <!-- Browser Frame -->
+  <rect x="50" y="40" width="700" height="370" rx="14" fill="#161616" stroke="#2E2E2E" stroke-width="1.5" />
+
+  <!-- Browser Top Bar -->
+  <rect x="50" y="40" width="700" height="42" rx="14" fill="#1F1F1F" />
+  <rect x="50" y="70" width="700" height="12" fill="#1F1F1F" />
+  <line x1="50" y1="82" x2="750" y2="82" stroke="#2B2B2B" stroke-width="1" />
+
+  <circle cx="76" cy="61" r="5" fill="#E74C3C" />
+  <circle cx="94" cy="61" r="5" fill="#F5A623" />
+  <circle cx="112" cy="61" r="5" fill="#2ECC71" />
+
+  <!-- Search / URL Bar -->
+  <rect x="180" y="50" width="400" height="22" rx="11" fill="#121212" stroke="#2A2A2A" />
+  <text x="380" y="65" fill="#777777" font-family="sans-serif" font-size="11" text-anchor="middle">https://mandiridigital.co.id</text>
+
+  <!-- Website Navbar in mockup -->
+  <rect x="50" y="82" width="700" height="46" fill="#181818" />
+  <line x1="50" y1="128" x2="750" y2="128" stroke="#262626" />
+  <text x="80" y="110" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">MANDIRI<tspan fill="#FFD700">SOLUSI</tspan></text>
+  <text x="450" y="108" fill="#888888" font-family="sans-serif" font-size="11">Tentang Kami</text>
+  <text x="540" y="108" fill="#888888" font-family="sans-serif" font-size="11">Layanan</text>
+  <text x="610" y="108" fill="#888888" font-family="sans-serif" font-size="11">Portofolio</text>
+  <rect x="670" y="93" width="60" height="24" rx="6" fill="#FFD700" />
+  <text x="700" y="109" fill="#0D0D0D" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">Kontak</text>
+
+  <!-- Hero Banner inside Mockup -->
+  <rect x="80" y="150" width="360" height="20" rx="4" fill="#FFD700" fill-opacity="0.15" />
+  <text x="90" y="164" fill="#FFD700" font-family="sans-serif" font-size="10" font-weight="bold">PORTAL PERUSAHAAN MODERN &amp; BERITA CMS</text>
+
+  <text x="80" y="210" fill="#FFFFFF" font-family="sans-serif" font-size="24" font-weight="bold">Solusi Digital Korporasi</text>
+  <text x="80" y="240" fill="#FFFFFF" font-family="sans-serif" font-size="24" font-weight="bold">Berstandar Global</text>
+  <text x="80" y="270" fill="#888888" font-family="sans-serif" font-size="12">Kelola seluruh publikasi, produk, dan portofolio dengan panel CMS intuitif.</text>
+
+  <rect x="80" y="300" width="120" height="34" rx="8" fill="url(#goldGrad2)" />
+  <text x="140" y="321" fill="#0D0D0D" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">Hubungi Kami</text>
+
+  <!-- Image card on right of hero -->
+  <rect x="480" y="150" width="240" height="220" rx="10" fill="#1C1C1C" stroke="#2E2E2E" />
+  <rect x="495" y="165" width="210" height="120" rx="6" fill="#252525" />
+  <circle cx="600" cy="225" r="28" fill="#333333" />
+  <rect x="495" y="300" width="130" height="12" rx="4" fill="#FFFFFF" />
+  <rect x="495" y="320" width="180" height="8" rx="3" fill="#666666" />
+  <rect x="495" y="335" width="150" height="8" rx="3" fill="#444444" />
+</svg>

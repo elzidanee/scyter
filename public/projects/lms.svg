@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#0A0A0A" />
+    </linearGradient>
+    <linearGradient id="goldGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBE6" />
+      <stop offset="50%" stop-color="#FFE873" />
+      <stop offset="100%" stop-color="#FFD700" />
+    </linearGradient>
+  </defs>
+
+  <rect width="800" height="450" fill="url(#bgGrad3)" />
+  <circle cx="650" cy="120" r="170" fill="#FFD700" fill-opacity="0.08" filter="blur(50px)" />
+
+  <!-- Frame -->
+  <rect x="50" y="40" width="700" height="370" rx="14" fill="#161616" stroke="#2E2E2E" stroke-width="1.5" />
+
+  <!-- Header -->
+  <rect x="50" y="40" width="700" height="42" rx="14" fill="#1F1F1F" />
+  <rect x="50" y="70" width="700" height="12" fill="#1F1F1F" />
+  <line x1="50" y1="82" x2="750" y2="82" stroke="#2B2B2B" stroke-width="1" />
+
+  <circle cx="76" cy="61" r="5" fill="#E74C3C" />
+  <circle cx="94" cy="61" r="5" fill="#F5A623" />
+  <circle cx="112" cy="61" r="5" fill="#2ECC71" />
+  <text x="140" y="66" fill="#888888" font-family="sans-serif" font-size="12">ScyterLMS :: Portal Kursus &amp; Sertifikasi Online</text>
+
+  <!-- Left Side: Video Player Mockup -->
+  <rect x="75" y="105" width="410" height="230" rx="10" fill="#0A0A0A" stroke="#282828" />
+  <!-- Video screen -->
+  <circle cx="280" cy="220" r="28" fill="#FFD700" fill-opacity="0.9" />
+  <polygon points="274,208 274,232 292,220" fill="#0D0D0D" />
+  <!-- Progress bar -->
+  <rect x="95" y="315" width="370" height="4" rx="2" fill="#222222" />
+  <rect x="95" y="315" width="220" height="4" rx="2" fill="#FFD700" />
+  <text x="75" y="360" fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold">Modul 04: Pengantar Rekayasa Sistem Kustom</text>
+  <text x="75" y="380" fill="#888888" font-family="sans-serif" font-size="11">Progress Kursus: 65% Selesai · Instruktur: ScyterCorp Academy</text>
+
+  <!-- Right Side: Syllabus / Curriculum List -->
+  <rect x="505" y="105" width="220" height="280" rx="10" fill="#1A1A1A" stroke="#282828" />
+  <text x="525" y="132" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold">Daftar Modul Belajar</text>
+
+  <!-- Item 1 -->
+  <rect x="520" y="150" width="190" height="40" rx="6" fill="#222222" />
+  <circle cx="538" cy="170" r="8" fill="#2ECC71" />
+  <text x="555" y="174" fill="#CCCCCC" font-family="sans-serif" font-size="10">01. Setup &amp; Fundamental</text>
+
+  <!-- Item 2 -->
+  <rect x="520" y="198" width="190" height="40" rx="6" fill="#222222" />
+  <circle cx="538" cy="218" r="8" fill="#2ECC71" />
+  <text x="555" y="222" fill="#CCCCCC" font-family="sans-serif" font-size="10">02. Arsitektur Database</text>
+
+  <!-- Item 3 Active -->
+  <rect x="520" y="246" width="190" height="40" rx="6" fill="#FFD700" fill-opacity="0.15" stroke="#FFD700" stroke-width="1" />
+  <circle cx="538" cy="266" r="8" fill="#FFD700" />
+  <text x="555" y="270" fill="#FFD700" font-family="sans-serif" font-size="10" font-weight="bold">03. Pemrograman Inti (Aktif)</text>
+
+  <!-- Item 4 -->
+  <rect x="520" y="294" width="190" height="40" rx="6" fill="#1C1C1C" />
+  <circle cx="538" cy="314" r="8" fill="#444444" />
+  <text x="555" y="318" fill="#777777" font-family="sans-serif" font-size="10">04. Kuis &amp; Sertifikat</text>
+
+  <!-- Certificate Ready Badge -->
+  <rect x="520" y="345" width="190" height="28" rx="6" fill="url(#goldGrad3)" />
+  <text x="615" y="363" fill="#0D0D0D" font-family="sans-serif" font-size="10" font-weight="bold" text-anchor="middle">🎓 E-Sertifikat QR Code</text>
+</svg>

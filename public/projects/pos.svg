@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141414" />
+      <stop offset="100%" stop-color="#0A0A0A" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFBE6" />
+      <stop offset="50%" stop-color="#FFE873" />
+      <stop offset="100%" stop-color="#FFD700" />
+    </linearGradient>
+    <linearGradient id="accentGlow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFD700" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#FFD700" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="450" fill="url(#bgGrad)" />
+  <circle cx="700" cy="80" r="180" fill="url(#accentGlow)" filter="blur(40px)" />
+  <circle cx="100" cy="350" r="140" fill="url(#accentGlow)" filter="blur(50px)" />
+
+  <!-- Window Frame -->
+  <rect x="50" y="40" width="700" height="370" rx="14" fill="#181818" stroke="#2E2E2E" stroke-width="1.5" />
+
+  <!-- Window Header -->
+  <rect x="50" y="40" width="700" height="42" rx="14" fill="#202020" />
+  <rect x="50" y="70" width="700" height="12" fill="#202020" />
+  <line x1="50" y1="82" x2="750" y2="82" stroke="#2E2E2E" stroke-width="1" />
+
+  <circle cx="76" cy="61" r="5" fill="#E74C3C" />
+  <circle cx="94" cy="61" r="5" fill="#F5A623" />
+  <circle cx="112" cy="61" r="5" fill="#2ECC71" />
+  <text x="140" y="66" fill="#888888" font-family="monospace" font-size="12">ScyterPOS :: Point of Sale &amp; Inventory</text>
+
+  <!-- Left Sidebar -->
+  <rect x="50" y="82" width="160" height="328" fill="#141414" />
+  <line x1="210" y1="82" x2="210" y2="410" stroke="#262626" stroke-width="1" />
+
+  <rect x="68" y="105" width="124" height="28" rx="6" fill="#FFD700" fill-opacity="0.15" stroke="#FFD700" stroke-width="1" />
+  <text x="82" y="123" fill="#FFD700" font-family="sans-serif" font-size="12" font-weight="bold">Kasir Penjualan</text>
+
+  <rect x="68" y="145" width="124" height="26" rx="6" fill="#1C1C1C" />
+  <text x="82" y="162" fill="#888888" font-family="sans-serif" font-size="11">Katalog Produk</text>
+
+  <rect x="68" y="180" width="124" height="26" rx="6" fill="#1C1C1C" />
+  <text x="82" y="197" fill="#888888" font-family="sans-serif" font-size="11">Stok Inventaris</text>
+
+  <rect x="68" y="215" width="124" height="26" rx="6" fill="#1C1C1C" />
+  <text x="82" y="232" fill="#888888" font-family="sans-serif" font-size="11">Laporan Omzet</text>
+
+  <!-- Main POS Grid Area -->
+  <!-- Top Stat Cards -->
+  <rect x="230" y="100" width="150" height="60" rx="8" fill="#1E1E1E" stroke="#2E2E2E" />
+  <text x="245" y="120" fill="#7A7A7A" font-family="sans-serif" font-size="10">TOTAL TRANSAKSI</text>
+  <text x="245" y="145" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold">148 Nota</text>
+
+  <rect x="395" y="100" width="160" height="60" rx="8" fill="#1E1E1E" stroke="#2E2E2E" />
+  <text x="410" y="120" fill="#7A7A7A" font-family="sans-serif" font-size="10">OMZET HARI INI</text>
+  <text x="410" y="145" fill="#FFD700" font-family="sans-serif" font-size="16" font-weight="bold">Rp 8.450.000</text>
+
+  <!-- Product Item Grid -->
+  <rect x="230" y="175" width="100" height="100" rx="8" fill="#1A1A1A" stroke="#2A2A2A" />
+  <circle cx="280" cy="215" r="20" fill="#282828" />
+  <text x="280" y="255" fill="#DDDDDD" font-family="sans-serif" font-size="11" text-anchor="middle" font-weight="bold">Item A</text>
+  <text x="280" y="268" fill="#FFD700" font-family="sans-serif" font-size="10" text-anchor="middle">Rp 35.000</text>
+
+  <rect x="345" y="175" width="100" height="100" rx="8" fill="#1A1A1A" stroke="#2A2A2A" />
+  <circle cx="395" cy="215" r="20" fill="#282828" />
+  <text x="395" y="255" fill="#DDDDDD" font-family="sans-serif" font-size="11" text-anchor="middle" font-weight="bold">Item B</text>
+  <text x="395" y="268" fill="#FFD700" font-family="sans-serif" font-size="10" text-anchor="middle">Rp 48.000</text>
+
+  <rect x="460" y="175" width="100" height="100" rx="8" fill="#1A1A1A" stroke="#2A2A2A" />
+  <circle cx="510" cy="215" r="20" fill="#282828" />
+  <text x="510" y="255" fill="#DDDDDD" font-family="sans-serif" font-size="11" text-anchor="middle" font-weight="bold">Item C</text>
+  <text x="510" y="268" fill="#FFD700" font-family="sans-serif" font-size="10" text-anchor="middle">Rp 25.000</text>
+
+  <rect x="230" y="290" width="330" height="100" rx="8" fill="#1A1A1A" stroke="#2A2A2A" />
+  <text x="245" y="315" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">Tren Penjualan Mingguan</text>
+  <path d="M 250 365 Q 320 325 390 350 T 530 320" fill="none" stroke="#FFD700" stroke-width="3" />
+  <circle cx="530" cy="320" r="4" fill="#FFD700" />
+
+  <!-- Right Order Cart Panel -->
+  <rect x="575" y="82" width="175" height="328" fill="#161616" />
+  <line x1="575" y1="82" x2="575" y2="410" stroke="#262626" stroke-width="1" />
+  <text x="590" y="112" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold">Pesanan Aktif</text>
+  <line x1="590" y1="125" x2="735" y2="125" stroke="#282828" />
+
+  <text x="590" y="150" fill="#CCCCCC" font-family="sans-serif" font-size="11">2x Item A</text>
+  <text x="735" y="150" fill="#FFFFFF" font-family="sans-serif" font-size="11" text-anchor="end">70.000</text>
+
+  <text x="590" y="175" fill="#CCCCCC" font-family="sans-serif" font-size="11">1x Item B</text>
+  <text x="735" y="175" fill="#FFFFFF" font-family="sans-serif" font-size="11" text-anchor="end">48.000</text>
+
+  <line x1="590" y1="200" x2="735" y2="200" stroke="#282828" />
+  <text x="590" y="225" fill="#888888" font-family="sans-serif" font-size="11">Total Bayar</text>
+  <text x="735" y="225" fill="#FFD700" font-family="sans-serif" font-size="13" font-weight="bold" text-anchor="end">Rp 118.000</text>
+
+  <rect x="590" y="345" width="145" height="36" rx="8" fill="url(#goldGrad)" />
+  <text x="662" y="368" fill="#0D0D0D" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle">Bayar &amp; Cetak Struk</text>
+</svg>
