@@ -155,17 +155,24 @@ export default function Footer() {
             <ul className="space-y-2 text-xs text-[#888888]">
               <li className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#FFD700] mt-0.5 shrink-0" />
-                <span>Sudirman Tech Corridor, Jakarta Selatan 12190</span>
+                <span>Malang, Indonesia</span>
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#FFD700] shrink-0" />
-                <a href="mailto:hello@scytercorp.com" className="hover:text-white transition-colors">
-                  hello@scytercorp.com
+                <a href="mailto:scyter.corp@gmail.com" className="hover:text-white transition-colors">
+                  scyter.corp@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#FFD700] shrink-0" />
-                <span>+62 812-3456-7890</span>
+                <a
+                  href="https://wa.me/6282233201091"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  082233201091
+                </a>
               </li>
             </ul>
           </div>

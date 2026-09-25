@@ -116,7 +116,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
         `Bisakah kita diskusikan lebih lanjut?`
     );
 
-    window.open(`https://wa.me/6281234567890?text=${text}`, "_blank");
+    window.open(`https://wa.me/6282233201091?text=${text}`, "_blank");
   };
 
   const handleUseForm = () => {

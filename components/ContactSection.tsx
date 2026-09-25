@@ -40,11 +40,11 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
   const handleDirectWhatsApp = () => {
     const text = encodeURIComponent(
       `Halo ScyterCorp! Saya ${formData.name || "Klien"} ingin konsultasi proyek:\n\n` +
-        `• Layanan: ${formData.serviceType}\n` +
-        `• Estimasi Budget: ${formData.budget}\n` +
-        `• Kebutuhan: ${formData.description || "Ingin berdiskusi lebih lanjut"}`
+      `• Layanan: ${formData.serviceType}\n` +
+      `• Estimasi Budget: ${formData.budget}\n` +
+      `• Kebutuhan: ${formData.description || "Ingin berdiskusi lebih lanjut"}`
     );
-    window.open(`https://wa.me/6281234567890?text=${text}`, "_blank");
+    window.open(`https://wa.me/6282233201091?text=${text}`, "_blank");
   };
 
   return (
@@ -80,7 +80,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                     <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-[#2ECC71] transition-colors">
                       Chat Langsung via WhatsApp
                     </h4>
-                    <p className="text-[11px] text-[#7A7A7A]">Respon cepat dan ramah</p>
+                    <p className="text-[11px] text-[#7A7A7A]">082233201091 · Respon cepat & ramah</p>
                   </div>
                 </div>
                 <span className="text-xs font-semibold text-[#2ECC71]">Chat Sekarang →</span>
@@ -90,8 +90,8 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                 <Mail className="w-4 h-4 text-[#FFD700] shrink-0" />
                 <div className="text-xs">
                   <span className="text-[#888888]">Email: </span>
-                  <a href="mailto:hello@scytercorp.com" className="text-white hover:text-[#FFD700]">
-                    hello@scytercorp.com
+                  <a href="mailto:scyter.corp@gmail.com" className="text-white hover:text-[#FFD700]">
+                    scyter.corp@gmail.com
                   </a>
                 </div>
               </div>
@@ -99,7 +99,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
               <div className="p-3.5 rounded-xl bg-[#141414] border border-[#262626] flex items-center gap-3">
                 <MapPin className="w-4 h-4 text-[#3B82F6] shrink-0" />
                 <div className="text-xs text-[#888888]">
-                  <span>Jakarta, Indonesia</span>
+                  <span>Malang, Indonesia</span>
                 </div>
               </div>
             </div>
