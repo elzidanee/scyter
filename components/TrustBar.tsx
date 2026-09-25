@@ -4,7 +4,7 @@ import Image from "next/image";
 import { CheckCircle2, ArrowUpRight, Cpu } from "lucide-react";
 
 interface SystemModule {
-  image?: string;
+  image: string;
   code: string;
   name: string;
   category: string;
@@ -15,7 +15,7 @@ interface SystemModule {
 
 const systems: SystemModule[] = [
   {
-    // image: "/images/projects/pos-preview.jpg", // Masukkan screenshot POS di sini
+    image: "/images/projects/pos-real.jpg",
     code: "SYS-01",
     name: "Sistem Kasir (POS) & Inventory",
     category: "RETAIL & F&B ENGINE",
@@ -24,7 +24,7 @@ const systems: SystemModule[] = [
     features: ["Thermal & Barcode API", "Multi-outlet Sync", "Laba Rugi Otomatis", "Offline-first Cache"],
   },
   {
-    // image: "/images/projects/cms-preview.jpg",
+    image: "/images/projects/cms-real.jpg",
     code: "SYS-02",
     name: "Headless CMS & Web Portal",
     category: "CORPORATE CONTENT",
@@ -33,7 +33,7 @@ const systems: SystemModule[] = [
     features: ["Next.js 16 SSR / SEO", "Role-based Access", "Media Cloud Optimizer", "Audit Log & History"],
   },
   {
-    // image: "/images/projects/lms-preview.jpg",
+    image: "/images/projects/lms-real.jpg",
     code: "SYS-03",
     name: "LMS Kursus & Edukasi",
     category: "EDTECH PLATFORM",
@@ -42,7 +42,7 @@ const systems: SystemModule[] = [
     features: ["Protected Video Stream", "Bank Soal & Kuis", "QR E-Certificate", "Payment Gateway Auto"],
   },
   {
-    // image: "/images/projects/pms-preview.jpg",
+    image: "/images/projects/pms-real.jpg",
     code: "SYS-04",
     name: "PMS Properti, Kos & Hotel",
     category: "MANAGEMENT SUITE",
@@ -73,7 +73,7 @@ export default function TrustBar() {
           </p>
         </div>
 
-        {/* 4 Cards Grid */}
+        {/* 4 Cards Grid with Real Photos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {systems.map((item) => (
             <div
@@ -81,85 +81,25 @@ export default function TrustBar() {
               className="rounded-2xl overflow-hidden bg-[#121212] border border-[#222222] hover:border-[#FFD700]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group flex flex-col justify-between"
             >
               <div>
-                {/* Visual / Screenshot Slot */}
-                <div className="relative h-44 overflow-hidden bg-[#0A0A0A] border-b border-[#1E1E1E]">
-                  {item.image ? (
-                    <Image
-                      src={item.image}
-                      alt={item.name}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      sizes="25vw"
-                    />
-                  ) : (
-                    /* Precision Wireframe Mockup Blueprint */
-                    <div className="absolute inset-0 p-3.5 flex flex-col justify-between">
-                      {/* Window Chrome Header */}
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-2 h-2 rounded-full bg-[#333333]" />
-                          <span className="w-2 h-2 rounded-full bg-[#333333]" />
-                          <span className="w-2 h-2 rounded-full bg-[#333333]" />
-                        </div>
-                        <span className="font-mono text-[9px] text-[#555555] tracking-wider uppercase">
-                          {item.code}
-                        </span>
-                      </div>
-
-                      {/* Mockup Dashboard Layout Blueprint */}
-                      <div className="space-y-2 my-auto">
-                        <div className="flex items-center gap-2">
-                          <div
-                            className="w-7 h-7 rounded-lg flex items-center justify-center shrink-0 border"
-                            style={{
-                              backgroundColor: `${item.accent}12`,
-                              borderColor: `${item.accent}30`,
-                              color: item.accent,
-                            }}
-                          >
-                            <span className="font-mono text-[10px] font-bold">
-                              {item.code.slice(-2)}
-                            </span>
-                          </div>
-                          <div className="flex-1 space-y-1">
-                            <div
-                              className="h-2 rounded-full w-4/5"
-                              style={{ backgroundColor: `${item.accent}35` }}
-                            />
-                            <div className="h-1.5 rounded-full w-1/2 bg-[#222222]" />
-                          </div>
-                        </div>
-
-                        {/* Data grid lines */}
-                        <div className="p-2 rounded-lg bg-[#111111] border border-[#1C1C1C] grid grid-cols-3 gap-1.5 text-center">
-                          <div className="bg-[#181818] p-1 rounded">
-                            <div className="h-1 rounded bg-[#333333] w-3/4 mx-auto mb-1" />
-                            <div className="h-1.5 rounded bg-[#444444] w-1/2 mx-auto" />
-                          </div>
-                          <div className="bg-[#181818] p-1 rounded">
-                            <div className="h-1 rounded bg-[#333333] w-3/4 mx-auto mb-1" />
-                            <div className="h-1.5 rounded bg-[#444444] w-1/2 mx-auto" />
-                          </div>
-                          <div className="bg-[#181818] p-1 rounded">
-                            <div className="h-1 rounded bg-[#333333] w-3/4 mx-auto mb-1" />
-                            <div className="h-1.5 rounded bg-[#444444] w-1/2 mx-auto" />
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Active Status Badge */}
-                      <div className="flex items-center justify-between text-[10px] font-mono text-[#666666]">
-                        <span className="flex items-center gap-1.5">
-                          <span
-                            className="w-1.5 h-1.5 rounded-full animate-pulse"
-                            style={{ backgroundColor: item.accent }}
-                          />
-                          <span className="text-[#888888]">DEPLOYMENT READY</span>
-                        </span>
-                        <span>v2.4</span>
-                      </div>
-                    </div>
-                  )}
+                {/* Real Photo Area */}
+                <div className="relative h-48 overflow-hidden bg-[#0A0A0A]">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    fill
+                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                  />
+                  {/* Subtle dark gradient overlay for text readability */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent" />
+                  
+                  {/* System Code Tag */}
+                  <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono text-white">
+                    {item.code}
+                  </div>
+                  <div className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-[#FFD700]/30 text-[10px] font-mono text-[#FFE873]">
+                    READY
+                  </div>
                 </div>
 
                 {/* Content */}

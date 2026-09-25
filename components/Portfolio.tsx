@@ -14,8 +14,7 @@ interface ProjectItem {
   summary: string;
   features: string[];
   tech: string;
-  // Masukkan screenshot project asli di public/images/projects/ (jika ada)
-  image?: string;
+  image: string;
   accent: string;
   urlBar: string;
 }
@@ -43,7 +42,7 @@ export default function Portfolio() {
       tech: "Next.js 16 · PostgreSQL · WebUSB API",
       accent: "#FFD700",
       urlBar: "pos.internal-retail.id",
-      // image: "/images/projects/pos-screenshot.jpg",
+      image: "/images/projects/pos-real.jpg",
     },
     {
       id: "company-cms",
@@ -63,7 +62,7 @@ export default function Portfolio() {
       tech: "Next.js · Tailwind CSS · Supabase",
       accent: "#60A5FA",
       urlBar: "portal.mandirisolusi.co.id",
-      // image: "/images/projects/cms-screenshot.jpg",
+      image: "/images/projects/cms-real.jpg",
     },
     {
       id: "fitness-app",
@@ -83,7 +82,7 @@ export default function Portfolio() {
       tech: "Flutter · Go Microservices · FCM",
       accent: "#34D399",
       urlBar: "app.aurafitness.id",
-      // image: "/images/projects/app-screenshot.jpg",
+      image: "/images/projects/app-real.jpg",
     },
     {
       id: "hospital-pms",
@@ -103,7 +102,7 @@ export default function Portfolio() {
       tech: "Next.js · Node.js · Redis · PostgreSQL",
       accent: "#C084FC",
       urlBar: "pms.urbanliving.id",
-      // image: "/images/projects/pms-screenshot.jpg",
+      image: "/images/projects/pms-real.jpg",
     },
     {
       id: "crypto-dashboard",
@@ -123,7 +122,7 @@ export default function Portfolio() {
       tech: "Figma Tokens · React · TradingView Charts",
       accent: "#F59E0B",
       urlBar: "analytics.nexafund.com",
-      // image: "/images/projects/uiux-screenshot.jpg",
+      image: "/images/projects/uiux-real.jpg",
     },
     {
       id: "fnb-lms",
@@ -143,7 +142,7 @@ export default function Portfolio() {
       tech: "Next.js · AWS S3 · PostgreSQL",
       accent: "#EC4899",
       urlBar: "academy.indobarista.com",
-      // image: "/images/projects/lms-screenshot.jpg",
+      image: "/images/projects/lms-real.jpg",
     },
   ];
 
@@ -200,91 +199,42 @@ export default function Portfolio() {
           </div>
         </div>
 
-        {/* Project Cards Grid */}
+        {/* Project Cards Grid with Real Photos */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((item) => (
             <div
               key={item.id}
               className="rounded-2xl bg-[#121212] border border-[#222222] hover:border-[#FFD700]/50 transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.6)]"
             >
-              {/* Image / Vector Mockup Header */}
-              <div className="relative h-52 overflow-hidden bg-[#0D0D0D] border-b border-[#1E1E1E]">
-                {item.image ? (
-                  <>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-transparent to-transparent" />
-                  </>
-                ) : (
-                  /* Realistic Software UI Window Mockup */
-                  <div className="absolute inset-0 p-3.5 flex flex-col justify-between">
-                    {/* Browser / OS Chrome Bar */}
-                    <div className="flex items-center justify-between pb-2 border-b border-[#1C1C1C]">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-2 h-2 rounded-full bg-[#FF5F56]/70" />
-                        <span className="w-2 h-2 rounded-full bg-[#FFBD2E]/70" />
-                        <span className="w-2 h-2 rounded-full bg-[#27C93F]/70" />
-                      </div>
-                      <div className="px-2.5 py-0.5 rounded bg-[#161616] border border-[#262626] font-mono text-[9px] text-[#737373] flex items-center gap-1.5">
-                        <span className="w-1 h-1 rounded-full bg-[#2ECC71]" />
-                        <span>{item.urlBar}</span>
-                      </div>
-                      <span
-                        className="text-[9px] font-mono px-1.5 py-0.5 rounded"
-                        style={{
-                          backgroundColor: `${item.accent}15`,
-                          color: item.accent,
-                        }}
-                      >
-                        LIVE
-                      </span>
-                    </div>
+              {/* Real Photo Area with Clean Browser Window Chrome */}
+              <div className="relative h-56 overflow-hidden bg-[#0D0D0D]">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+                
+                {/* Gradient Fade Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/20 to-black/40" />
 
-                    {/* Dashboard Wireframe Content */}
-                    <div className="space-y-2 my-auto">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <div
-                            className="h-2 rounded w-28"
-                            style={{ backgroundColor: `${item.accent}40` }}
-                          />
-                          <div className="h-1.5 rounded w-16 bg-[#222222]" />
-                        </div>
-                        <div className="flex gap-1">
-                          <div className="w-8 h-4 rounded bg-[#1A1A1A] border border-[#262626]" />
-                          <div className="w-10 h-4 rounded bg-[#FFD700]/20 border border-[#FFD700]/30" />
-                        </div>
-                      </div>
-
-                      {/* Mockup Chart / Data Rows */}
-                      <div className="p-2.5 rounded-lg bg-[#141414] border border-[#1E1E1E] space-y-1.5">
-                        <div className="flex items-center justify-between text-[9px] font-mono text-[#555555]">
-                          <span>METRIC_TELEMETRY</span>
-                          <span className="text-[#2ECC71]">STABLE (0.02s)</span>
-                        </div>
-                        <div className="flex items-end gap-1.5 h-10 pt-1">
-                          <div className="flex-1 bg-[#222222] rounded-t h-[40%]" />
-                          <div className="flex-1 bg-[#222222] rounded-t h-[65%]" />
-                          <div className="flex-1 bg-[#222222] rounded-t h-[50%]" />
-                          <div className="flex-1 rounded-t h-[85%]" style={{ backgroundColor: `${item.accent}60` }} />
-                          <div className="flex-1 bg-[#222222] rounded-t h-[70%]" />
-                          <div className="flex-1 rounded-t h-[95%]" style={{ backgroundColor: item.accent }} />
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Bottom Indicator */}
-                    <div className="flex items-center justify-between text-[10px] font-mono text-[#555555]">
-                      <span>{item.client}</span>
-                      <span className="text-[#888888]">100% Bespoke Code</span>
-                    </div>
+                {/* Top Window Bar Pill */}
+                <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
+                  <div className="px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 font-mono text-[10px] text-[#A6A6A6] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC71]" />
+                    <span>{item.urlBar}</span>
                   </div>
-                )}
+                  <span
+                    className="text-[10px] font-mono px-2 py-0.5 rounded-md font-bold bg-black/75 backdrop-blur-md border"
+                    style={{
+                      borderColor: `${item.accent}40`,
+                      color: item.accent,
+                    }}
+                  >
+                    LIVE
+                  </span>
+                </div>
               </div>
 
               {/* Text Information Area */}
@@ -353,6 +303,16 @@ export default function Portfolio() {
               >
                 <X className="w-4 h-4" />
               </button>
+
+              <div className="relative h-44 rounded-xl overflow-hidden mb-2">
+                <Image
+                  src={modalProject.image}
+                  alt={modalProject.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+              </div>
 
               <div>
                 <span
