@@ -3,8 +3,10 @@
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import TechMarquee from "@/components/TechMarquee";
 import TrustBar from "@/components/TrustBar";
 import Services from "@/components/Services";
+import StatsBento from "@/components/StatsBento";
 import ProjectEstimator from "@/components/ProjectEstimator";
 import Portfolio from "@/components/Portfolio";
 import Methodology from "@/components/Methodology";
@@ -37,19 +39,25 @@ export default function Home() {
         {/* Hero Section */}
         <Hero onOpenConsultation={handleOpenConsultation} />
 
+        {/* 21st.dev Infinite Slider Marquee for Enterprise Tech Ecosystem */}
+        <TechMarquee />
+
         {/* Custom Systems Showcase (POS, CMS, LMS, PMS) */}
         <TrustBar />
 
-        {/* 4 Core Services: Web, App, UI/UX, Custom System */}
+        {/* 4 Core Services with Real Device Mockups: Web, App, UI/UX, Custom System */}
         <Services />
 
-        {/* Interactive Estimator Calculator */}
-        <ProjectEstimator onProceedToForm={handleProceedToForm} />
+        {/* 21st.dev Stats Bento Grid with Animated Numbers & Spotlight Glow */}
+        <StatsBento />
 
         {/* Real-World Case Studies & Portfolio */}
         <Portfolio />
 
-        {/* 4-Step Methodology */}
+        {/* Interactive Estimator Calculator */}
+        <ProjectEstimator onProceedToForm={handleProceedToForm} />
+
+        {/* 21st.dev Inspired Step-by-Step Interactive Timeline */}
         <Methodology />
 
         {/* 4 Guarantees */}
