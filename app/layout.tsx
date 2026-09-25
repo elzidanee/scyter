@@ -23,6 +23,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://scytercorp.com"),
   title: "ScyterCorp — Enterprise Software House & Digital Solutions",
   description:
     "ScyterCorp adalah software house terkemuka yang membangun solusi software berkinerja tinggi, sistem web & mobile skala enterprise, arsitektur cloud terdistribusi, dan automasi AI untuk mengakselerasi pertumbuhan bisnis Anda.",
