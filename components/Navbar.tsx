@@ -29,6 +29,14 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
     { label: "FAQ", href: "#faq" },
   ];
 
+  const handleScrollToTop = (e: React.MouseEvent) => {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    if (window.location.hash) {
+      window.history.pushState(null, "", window.location.pathname);
+    }
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-3.5 sm:pt-4 px-3 sm:px-6 flex flex-col items-center">
       {/* Floating Island Navbar */}
@@ -40,11 +48,12 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
         }`}
       >
         <div className="flex items-center justify-between gap-4 lg:gap-8">
-          {/* 1. Left: Brand Logo */}
+          {/* 1. Left: Brand Logo (Scroll to Top on Click) */}
           <Link
             href="/"
-            className="flex items-center shrink-0 group focus:outline-none"
-            aria-label="ScyterCorp Home"
+            onClick={handleScrollToTop}
+            className="flex items-center shrink-0 group focus:outline-none cursor-pointer"
+            aria-label="ScyterCorp Home - Scroll to top"
           >
             <div className="relative h-7 sm:h-8 w-32 sm:w-40 transition-transform duration-300 group-hover:scale-[1.02]">
               <Image

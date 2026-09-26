@@ -9,8 +9,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="inline-block">
-              <div className="relative h-9 w-44">
+            <a href="#" aria-label="ScyterCorp - Kembali ke atas" className="inline-block group cursor-pointer">
+              <div className="relative h-9 w-44 transition-transform duration-300 group-hover:scale-[1.02]">
                 <Image
                   src="/logo2.png"
                   alt="ScyterCorp"
@@ -18,7 +18,7 @@ export default function Footer() {
                   className="object-contain object-left"
                 />
               </div>
-            </Link>
+            </a>
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed max-w-sm font-normal">
               ScyterCorp adalah software house yang merekayasa website performa tinggi, aplikasi mobile, dan sistem bisnis kustom dengan kepemilikan kode 100% tanpa biaya sewa tersembunyi.
             </p>
