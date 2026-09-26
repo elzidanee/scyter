@@ -30,39 +30,48 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-[#121212] relative overflow-hidden border-t border-[#262626]">
+    <section id="faq" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="text-center mb-10 space-y-2">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#181818] border border-[#2E2E2E] text-xs font-semibold text-[#FFD700]">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Tanya Jawab</span>
+        <div className="text-center mb-12 space-y-2.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
+            <HelpCircle className="w-3.5 h-3.5 text-amber-400" />
+            <span>TANYA JAWAB // FAQ</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
             Pertanyaan yang <span className="gold-gradient-text">Sering Diajukan</span>
           </h2>
+          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+            Transparansi penuh mengenai hak milik, estimasi pengerjaan, dan jaminan kualitas untuk kenyamanan Anda.
+          </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;
             return (
               <div
                 key={index}
-                className="rounded-xl bg-[#161616] border border-[#262626] transition-all overflow-hidden"
+                className={`rounded-2xl bg-[#0F0F12] border transition-all duration-200 overflow-hidden ${
+                  isOpen
+                    ? "border-amber-400/40 shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
+                    : "border-white/[0.08] hover:border-white/[0.16]"
+                }`}
               >
                 <button
                   onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between p-4 sm:p-5 text-left font-semibold text-white hover:text-[#FFE873] transition-colors cursor-pointer text-sm sm:text-base"
+                  className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-semibold text-white hover:text-amber-200 transition-colors cursor-pointer text-sm sm:text-base gap-4"
                 >
-                  <span className="pr-4">{faq.q}</span>
-                  <ChevronDown
-                    className={`w-4 h-4 text-[#FFD700] shrink-0 transition-transform duration-200 ${
-                      isOpen ? "rotate-180" : ""
+                  <span className="leading-snug">{faq.q}</span>
+                  <div
+                    className={`w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 text-amber-400 transition-transform duration-200 ${
+                      isOpen ? "rotate-180 bg-amber-400/10 border-amber-400/30" : ""
                     }`}
-                  />
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
                 </button>
                 {isOpen && (
-                  <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-1 text-xs sm:text-sm text-[#888888] leading-relaxed border-t border-[#202020]">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-white/[0.06] font-normal">
                     {faq.a}
                   </div>
                 )}

@@ -160,37 +160,37 @@ export default function Portfolio() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="py-24 bg-[#0A0A0A] relative overflow-hidden">
+    <section id="portfolio" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       {/* Precision Grid Accent */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f1f1f12_1px,transparent_1px),linear-gradient(to_bottom,#1f1f1f12_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#141414] border border-[#242424] text-[11px] font-mono text-[#D4AF37] mb-2.5">
-              <Sparkles className="w-3 h-3 text-[#FFD700]" />
-              <span>SELECTED CASE STUDIES</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-mono text-amber-300 mb-2.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span>SELECTED CASE STUDIES & SYSTEMS</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
               Karya Rekayasa <span className="gold-gradient-text">Software & Solusi Nyata</span>
             </h2>
-            <p className="text-xs sm:text-sm text-[#888888] mt-2 max-w-xl">
-              Setiap proyek dirancang khusus dari nol untuk menjawab tantangan operasional dan pertumbuhan bisnis klien kami.
+            <p className="text-xs sm:text-sm text-zinc-400 mt-2 max-w-xl leading-relaxed">
+              Setiap proyek dirancang khusus dari nol untuk menjawab tantangan operasional dan mendorong pertumbuhan bisnis klien secara nyata.
             </p>
           </div>
 
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap gap-1.5 p-1 rounded-xl bg-[#121212] border border-[#222222]">
+          {/* Category Filter Segmented Control */}
+          <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-[#121215] border border-white/[0.08]">
             {categories.map((c) => (
               <button
                 key={c.id}
                 onClick={() => setActiveCategory(c.id)}
                 className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
                   activeCategory === c.id
-                    ? "bg-[#FFE873] text-[#0D0D0D] shadow-sm font-bold"
-                    : "text-[#888888] hover:text-white"
+                    ? "bg-amber-400 text-[#09090B] shadow-sm font-bold"
+                    : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
                 }`}
               >
                 {c.label}
@@ -204,10 +204,10 @@ export default function Portfolio() {
           {filtered.map((item) => (
             <div
               key={item.id}
-              className="rounded-2xl bg-[#121212] border border-[#222222] hover:border-[#FFD700]/50 transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(0,0,0,0.6)]"
+              className="rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)]"
             >
               {/* Real Photo Area with Clean Browser Window Chrome */}
-              <div className="relative h-56 overflow-hidden bg-[#0D0D0D]">
+              <div className="relative h-56 overflow-hidden bg-zinc-950">
                 <Image
                   src={item.image}
                   alt={item.title}
@@ -217,18 +217,18 @@ export default function Portfolio() {
                 />
                 
                 {/* Gradient Fade Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/20 to-black/40" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-[#0F0F12]/20 to-black/40" />
 
                 {/* Top Window Bar Pill */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between">
-                  <div className="px-2.5 py-1 rounded-lg bg-black/75 backdrop-blur-md border border-white/10 font-mono text-[10px] text-[#A6A6A6] flex items-center gap-1.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#2ECC71]" />
+                  <div className="px-2.5 py-1 rounded-lg bg-black/80 backdrop-blur-md border border-white/10 font-mono text-[10px] text-zinc-300 flex items-center gap-1.5 shadow-sm">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
                     <span>{item.urlBar}</span>
                   </div>
                   <span
-                    className="text-[10px] font-mono px-2 py-0.5 rounded-md font-bold bg-black/75 backdrop-blur-md border"
+                    className="text-[10px] font-mono px-2 py-0.5 rounded-md font-bold bg-black/80 backdrop-blur-md border shadow-sm"
                     style={{
-                      borderColor: `${item.accent}40`,
+                      borderColor: `${item.accent}50`,
                       color: item.accent,
                     }}
                   >
@@ -251,23 +251,23 @@ export default function Portfolio() {
                     >
                       {item.categoryLabel}
                     </span>
-                    <span className="text-[10px] font-mono text-[#666666]">
+                    <span className="text-[10px] font-mono text-zinc-500">
                       {item.client}
                     </span>
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-[#FFE873] transition-colors font-[family-name:var(--font-heading)] leading-snug">
+                  <h3 className="text-base font-bold text-white group-hover:text-amber-200 transition-colors font-[family-name:var(--font-heading)] leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-[#888888] mt-2 leading-relaxed line-clamp-2">
+                  <p className="text-xs text-zinc-400 mt-2 leading-relaxed line-clamp-2">
                     {item.tagline}
                   </p>
 
                   {/* Key Features Bullet List */}
-                  <div className="mt-4 pt-4 border-t border-[#1C1C1C] space-y-1.5">
+                  <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-1.5">
                     {item.features.slice(0, 3).map((f, i) => (
-                      <div key={i} className="flex items-start gap-2 text-xs text-[#A6A6A6]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#2ECC71] mt-0.5 shrink-0" />
+                      <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                         <span className="line-clamp-1">{f}</span>
                       </div>
                     ))}
@@ -275,16 +275,16 @@ export default function Portfolio() {
                 </div>
 
                 {/* Footer Bar */}
-                <div className="mt-5 pt-4 border-t border-[#1C1C1C] flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-[#666666] truncate max-w-[180px]">
+                <div className="mt-5 pt-4 border-t border-white/[0.06] flex items-center justify-between">
+                  <span className="text-[11px] font-mono text-zinc-500 truncate max-w-[180px]">
                     {item.tech}
                   </span>
                   <button
                     onClick={() => setModalProject(item)}
-                    className="text-xs font-bold text-[#FFD700] hover:text-[#FFE873] flex items-center gap-1.5 cursor-pointer"
+                    className="text-xs font-bold text-amber-300 hover:text-amber-200 flex items-center gap-1.5 cursor-pointer group/btn"
                   >
                     <span>Detail Spek</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-0.5" />
                   </button>
                 </div>
               </div>
@@ -295,31 +295,32 @@ export default function Portfolio() {
 
         {/* Modal Detail View */}
         {modalProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-            <div className="relative w-full max-w-lg rounded-2xl bg-[#141414] border border-[#2B2B2B] p-6 sm:p-7 shadow-2xl space-y-5">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+            <div className="relative w-full max-w-lg rounded-2xl bg-[#0F0F12] border border-white/[0.1] p-6 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(255,255,255,0.08)] space-y-5">
               <button
                 onClick={() => setModalProject(null)}
-                className="absolute top-5 right-5 p-1.5 rounded-lg bg-[#202020] text-[#888888] hover:text-white cursor-pointer"
+                className="absolute top-5 right-5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
+                aria-label="Tutup modal"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="relative h-44 rounded-xl overflow-hidden mb-2">
+              <div className="relative h-44 rounded-xl overflow-hidden mb-2 bg-zinc-950">
                 <Image
                   src={modalProject.image}
                   alt={modalProject.title}
                   fill
                   className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141414] via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent" />
               </div>
 
               <div>
                 <span
                   className="px-2.5 py-1 rounded text-xs font-mono font-bold inline-block"
                   style={{
-                    background: `${modalProject.accent}20`,
-                    border: `1px solid ${modalProject.accent}40`,
+                    background: `${modalProject.accent}15`,
+                    border: `1px solid ${modalProject.accent}30`,
                     color: modalProject.accent,
                   }}
                 >
@@ -328,36 +329,39 @@ export default function Portfolio() {
                 <h3 className="text-xl font-bold text-white mt-2 font-[family-name:var(--font-heading)]">
                   {modalProject.title}
                 </h3>
-                <p className="text-xs text-[#888888] mt-1">{modalProject.tagline}</p>
+                <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{modalProject.tagline}</p>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#CCCCCC] leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
                 {modalProject.summary}
               </p>
 
-              <div className="p-4 rounded-xl bg-[#181818] border border-[#262626] space-y-2.5">
+              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2.5">
                 <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
                   Spesifikasi Fitur Utama:
                 </div>
                 {modalProject.features.map((f, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-[#D1D1D1]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#2ECC71] mt-0.5 shrink-0" />
+                  <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
                     <span>{f}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="p-3 rounded-lg bg-[#111111] border border-[#222222] flex items-center justify-between text-xs font-mono text-[#888888]">
+              <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-between text-xs font-mono text-zinc-400">
                 <span>TECH STACK:</span>
-                <span className="text-white">{modalProject.tech}</span>
+                <span className="text-zinc-200">{modalProject.tech}</span>
               </div>
 
               <div className="pt-2 flex items-center justify-between">
-                <span className="text-xs text-[#7A7A7A]">Ingin sistem serupa?</span>
+                <span className="text-xs text-zinc-400">Ingin sistem serupa?</span>
                 <a
                   href="#contact"
                   onClick={() => setModalProject(null)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#FFD700] text-[#0D0D0D] font-bold text-xs hover:bg-[#FFE873] transition-all cursor-pointer"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[#09090B] font-bold text-xs hover:brightness-105 transition-all cursor-pointer shadow-sm"
+                  style={{
+                    background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
+                  }}
                 >
                   <span>Konsultasi Proyek Ini</span>
                   <ExternalLink className="w-3.5 h-3.5" />

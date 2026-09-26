@@ -130,101 +130,107 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
   };
 
   return (
-    <section id="estimator" className="py-20 bg-[#121212] relative overflow-hidden border-t border-[#262626]">
+    <section id="estimator" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1A1A1A] border border-[#2E2E2E] text-xs font-semibold text-[#FFD700]">
-            <Calculator className="w-3.5 h-3.5" />
-            <span>Kalkulator Estimasi Cepat</span>
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
+            <Calculator className="w-3.5 h-3.5 text-amber-400" />
+            <span>KALKULATOR ESTIMASI PROYEK</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
             Hitung Estimasi Biaya & Waktu <span className="gold-gradient-text">Proyek Anda</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#888888]">
-            Pilih kebutuhan layanan Anda di bawah ini untuk melihat gambaran durasi pengerjaan dan estimasi biaya secara transparan.
+          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+            Pilih parameter kebutuhan bisnis Anda di bawah ini untuk melihat gambaran durasi pengerjaan dan estimasi biaya secara transparan tanpa biaya tersembunyi.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls Column */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 space-y-7">
             {/* Step 1: Pilihan Layanan */}
-            <div className="space-y-2.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#FFD700]">
-                1. Pilih Layanan
+            <div className="space-y-3">
+              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <span>01 // PILIH JENIS LAYANAN</span>
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                {services.map((s) => (
-                  <button
-                    key={s.id}
-                    onClick={() => setServiceType(s.id)}
-                    className={`p-3 rounded-xl text-left border transition-all cursor-pointer ${
-                      serviceType === s.id
-                        ? "bg-[#1C1C1C] border-[#FFD700] shadow-[0_0_16px_rgba(255,215,0,0.15)]"
-                        : "bg-[#161616] border-[#2A2A2A] hover:border-[#3A3A3A]"
-                    }`}
-                  >
-                    <div className="text-xs font-bold text-white flex items-center justify-between">
-                      <span>{s.name}</span>
-                      {serviceType === s.id && <Check className="w-3.5 h-3.5 text-[#FFD700]" />}
-                    </div>
-                    <p className="text-[10px] text-[#7A7A7A] mt-1 leading-snug">{s.desc}</p>
-                  </button>
-                ))}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {services.map((s) => {
+                  const isSelected = serviceType === s.id;
+                  return (
+                    <button
+                      key={s.id}
+                      onClick={() => setServiceType(s.id)}
+                      className={`p-3.5 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
+                          : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      <div className="text-xs sm:text-[13px] font-bold text-white flex items-center justify-between">
+                        <span>{s.name}</span>
+                        {isSelected && <Check className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+                      </div>
+                      <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug">{s.desc}</p>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             {/* Step 2: Paket Kebutuhan */}
-            <div className="space-y-2.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#FFD700]">
-                2. Tingkat Skala Kebutuhan
+            <div className="space-y-3">
+              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <span>02 // SKALA & KOMPLEKSITAS</span>
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {tiers.map((t) => (
-                  <button
-                    key={t.id}
-                    onClick={() => setTier(t.id)}
-                    className={`p-3.5 rounded-xl text-left border transition-all cursor-pointer ${
-                      tier === t.id
-                        ? "bg-[#1C1C1C] border-[#FFD700]"
-                        : "bg-[#161616] border-[#2A2A2A] hover:border-[#3A3A3A]"
-                    }`}
-                  >
-                    <div className="text-xs font-bold text-white flex items-center justify-between">
-                      <span>{t.name}</span>
-                      {tier === t.id && <Check className="w-3.5 h-3.5 text-[#FFD700]" />}
-                    </div>
-                    <p className="text-[11px] text-[#7A7A7A] mt-1">{t.desc}</p>
-                  </button>
-                ))}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {tiers.map((t) => {
+                  const isSelected = tier === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setTier(t.id)}
+                      className={`p-4 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
+                          : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      <div className="text-xs sm:text-sm font-bold text-white flex items-center justify-between">
+                        <span>{t.name}</span>
+                        {isSelected && <Check className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+                      </div>
+                      <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed">{t.desc}</p>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             {/* Step 3: Fitur Tambahan */}
-            <div className="space-y-2.5">
-              <label className="text-xs font-bold uppercase tracking-wider text-[#FFD700]">
-                3. Fitur Tambahan (Opsional)
+            <div className="space-y-3">
+              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <span>03 // FITUR & INTEGRASI TAMBAHAN (OPSIONAL)</span>
               </label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 {addons.map((a) => {
                   const isChecked = selectedAddons.includes(a.id);
                   return (
                     <button
                       key={a.id}
                       onClick={() => toggleAddon(a.id)}
-                      className={`p-2.5 rounded-lg text-left border transition-all flex items-center justify-between cursor-pointer ${
+                      className={`p-3 rounded-xl text-left border transition-all duration-200 flex items-center justify-between cursor-pointer ${
                         isChecked
-                          ? "bg-[#1E1E1E] border-[#FFE873] text-white"
-                          : "bg-[#161616] border-[#2A2A2A] text-[#888888] hover:border-[#383838]"
+                          ? "bg-amber-400/[0.04] border-amber-400/50 text-white"
+                          : "bg-[#0F0F12] border-white/[0.06] text-zinc-400 hover:border-white/[0.14] hover:text-zinc-300"
                       }`}
                     >
-                      <span className="text-xs">{a.name}</span>
+                      <span className="text-xs leading-snug">{a.name}</span>
                       <div
-                        className={`w-4 h-4 rounded flex items-center justify-center border shrink-0 ml-2 ${
+                        className={`w-4 h-4 rounded flex items-center justify-center border shrink-0 ml-3 transition-colors ${
                           isChecked
-                            ? "bg-[#FFD700] border-[#FFD700] text-[#0D0D0D]"
-                            : "border-[#333333] bg-[#121212]"
+                            ? "bg-amber-400 border-amber-400 text-[#09090B]"
+                            : "border-white/[0.15] bg-white/[0.02]"
                         }`}
                       >
                         {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
@@ -238,50 +244,52 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
 
           {/* Results Column */}
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <div className="rounded-2xl bg-[#161616] border border-[#2E2E2E] p-6 shadow-[0_16px_40px_rgba(0,0,0,0.6)] space-y-5">
-              <div className="flex items-center justify-between pb-4 border-b border-[#2A2A2A]">
+            <div className="rounded-2xl bg-[#0F0F12] border border-white/[0.08] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-5">
+              <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                 <div>
-                  <span className="text-[10px] uppercase font-bold text-[#7A7A7A]">Ringkasan</span>
-                  <h3 className="text-base font-bold text-white mt-0.5">
+                  <span className="text-[10px] font-mono uppercase tracking-wider text-zinc-500 font-semibold">
+                    RINGKASAN ESTIMASI
+                  </span>
+                  <h3 className="text-base font-bold text-white mt-0.5 font-[family-name:var(--font-heading)]">
                     {calculation.serviceName}
                   </h3>
                 </div>
-                <span className="px-2.5 py-0.5 rounded-full bg-[#202020] text-[11px] text-[#FFE873]">
+                <span className="px-2.5 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-[11px] font-mono font-medium text-amber-300">
                   {calculation.tierName}
                 </span>
               </div>
 
               {/* Duration and Cost cards */}
               <div className="grid grid-cols-2 gap-3">
-                <div className="p-3.5 rounded-xl bg-[#1C1C1C] border border-[#2A2A2A]">
-                  <div className="flex items-center gap-1.5 text-xs text-[#7A7A7A] mb-1">
-                    <Calendar className="w-3.5 h-3.5 text-[#FFD700]" />
-                    <span>Waktu Kerja</span>
+                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 mb-1">
+                    <Calendar className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Durasi Kerja</span>
                   </div>
                   <div className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
-                    {calculation.minWeeks} – {calculation.maxWeeks} <span className="text-xs font-normal text-[#888888]">Minggu</span>
+                    {calculation.minWeeks} – {calculation.maxWeeks} <span className="text-xs font-normal text-zinc-400">Minggu</span>
                   </div>
                 </div>
 
-                <div className="p-3.5 rounded-xl bg-[#1C1C1C] border border-[#2A2A2A]">
-                  <div className="flex items-center gap-1.5 text-xs text-[#7A7A7A] mb-1">
-                    <Layers className="w-3.5 h-3.5 text-[#2ECC71]" />
-                    <span>Estimasi Biaya</span>
+                <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
+                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 mb-1">
+                    <Layers className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Perkiraan Biaya</span>
                   </div>
-                  <div className="text-xl font-bold text-[#FFD700] font-[family-name:var(--font-heading)]">
-                    {calculation.minCost} – {calculation.maxCost} <span className="text-xs font-normal text-[#FFE873]">Juta</span>
+                  <div className="text-xl font-bold text-amber-300 font-[family-name:var(--font-heading)]">
+                    {calculation.minCost} – {calculation.maxCost} <span className="text-xs font-normal text-amber-200/80">Juta</span>
                   </div>
                 </div>
               </div>
 
               {/* Guarantees */}
-              <div className="space-y-1.5 text-xs text-[#888888] pt-1">
+              <div className="space-y-2 text-xs text-zinc-300 pt-1">
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#2ECC71] shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>100% Hak Milik Source Code & Data Bisnis</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#2ECC71] shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>Garansi Perbaikan Bug Gratis Setelah Rilis</span>
                 </div>
               </div>
@@ -290,9 +298,9 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
               <div className="space-y-2.5 pt-2">
                 <button
                   onClick={handleSendWhatsApp}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#0D0D0D] transition-all hover:brightness-105 cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-all hover:brightness-105 active:scale-[0.98] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
                   style={{
-                    background: "linear-gradient(180deg, #FFFBE6 0%, #FFE873 40%, #FFD700 100%)",
+                    background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
                   }}
                 >
                   <Send className="w-4 h-4" />
@@ -301,14 +309,14 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
 
                 <button
                   onClick={handleUseForm}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-medium text-white bg-[#222222] border border-[#333333] hover:bg-[#282828] transition-colors cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-zinc-200 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:text-white transition-colors cursor-pointer group/form"
                 >
                   <span>Kirim ke Formulir Pesan</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#888888]" />
+                  <ArrowRight className="w-3.5 h-3.5 text-zinc-400 transition-transform group-form:translate-x-0.5" />
                 </button>
               </div>
 
-              <p className="text-[10px] text-[#666666] text-center">
+              <p className="text-[10px] text-zinc-500 text-center font-mono">
                 *Estimasi dapat disesuaikan kembali sesuai kebutuhan spesifik Anda.
               </p>
             </div>

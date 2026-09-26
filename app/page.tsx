@@ -28,7 +28,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0D0D0D] text-white flex flex-col selection:bg-[#FFD700] selection:text-[#0D0D0D]">
+    <div className="min-h-screen bg-[#09090B] text-white flex flex-col selection:bg-amber-400 selection:text-[#09090B]">
       {/* Sticky Global Navigation */}
       <Navbar onOpenConsultation={handleOpenConsultation} />
 

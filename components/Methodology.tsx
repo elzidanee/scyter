@@ -66,57 +66,58 @@ export default function Methodology() {
   ];
 
   return (
-    <section id="methodology" className="py-20 bg-[#0A0A0A] relative overflow-hidden border-t border-white/[0.06]">
+    <section id="methodology" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
-          <span className="text-xs uppercase font-mono tracking-widest text-[#D4AF37]">
-            ALUR KERJA TERSTRUKTUR
-          </span>
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+            <span>ALUR KERJA TERSTRUKTUR</span>
+          </div>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
             Dari Ide Menjadi <span className="gold-gradient-text">Sistem Siap Pakai</span>
           </h2>
-          <p className="text-xs sm:text-sm text-[#888888] leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
             Setiap fase memiliki milestone yang jelas, terukur, dan transparan sehingga proyek selesai tepat waktu sesuai spesifikasi yang disepakati.
           </p>
         </div>
 
         {/* 4 Step Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {steps.map((item) => {
             const Icon = item.icon;
 
             return (
               <div
                 key={item.step}
-                className="p-6 rounded-2xl bg-[#121212] border border-[#222222] hover:border-[#FFD700]/40 transition-all duration-300 flex flex-col justify-between group"
+                className="p-6 rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Top Bar with Number & Icon */}
                   <div className="flex items-center justify-between mb-5">
-                    <span className="text-2xl font-black text-[#FFD700] font-[family-name:var(--font-heading)]">
+                    <span className="text-3xl font-black text-amber-400/90 font-[family-name:var(--font-heading)]">
                       {item.step}
                     </span>
-                    <div className="w-9 h-9 rounded-xl bg-[#1A1A1A] border border-[#2A2A2A] flex items-center justify-center text-[#FFD700]">
+                    <div className="w-9 h-9 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-amber-400 shadow-sm">
                       <Icon className="w-4 h-4" />
                     </div>
                   </div>
 
-                  <h3 className="text-base font-bold text-white group-hover:text-[#FFE873] transition-colors font-[family-name:var(--font-heading)]">
+                  <h3 className="text-base font-bold text-white group-hover:text-amber-200 transition-colors font-[family-name:var(--font-heading)]">
                     {item.title}
                   </h3>
-                  <div className="text-[11px] font-mono text-[#A3A3A3] mt-0.5 mb-2">
+                  <div className="text-[11px] font-mono text-zinc-400 mt-0.5 mb-2.5">
                     {item.subtitle}
                   </div>
-                  <p className="text-xs text-[#888888] leading-relaxed">
+                  <p className="text-xs text-zinc-400 leading-relaxed">
                     {item.desc}
                   </p>
 
                   {/* Checklist Points */}
-                  <div className="mt-4 pt-4 border-t border-[#1C1C1C] space-y-2">
+                  <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-2">
                     {item.points.map((p, pIdx) => (
-                      <div key={pIdx} className="flex items-start gap-2 text-[11px] text-[#AAAAAA]">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-[#2ECC71] shrink-0 mt-0.5" />
+                      <div key={pIdx} className="flex items-start gap-2 text-[11px] text-zinc-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
                         <span className="leading-tight">{p}</span>
                       </div>
                     ))}
@@ -124,13 +125,13 @@ export default function Methodology() {
                 </div>
 
                 {/* Deliverable Badge */}
-                <div className="mt-5 pt-4 border-t border-[#1C1C1C]">
-                  <div className="text-[10px] uppercase font-mono tracking-wider text-[#666666] mb-1">
+                <div className="mt-6 pt-4 border-t border-white/[0.06]">
+                  <div className="text-[10px] uppercase font-mono tracking-wider text-zinc-500 mb-1.5 font-medium">
                     Output Deliverable:
                   </div>
-                  <div className="text-[11px] font-medium text-[#E6E6E6] bg-[#161616] px-2.5 py-1.5 rounded-lg border border-[#262626] flex items-center justify-between">
+                  <div className="text-[11px] font-medium text-zinc-200 bg-white/[0.02] px-3 py-2 rounded-xl border border-white/[0.06] flex items-center justify-between">
                     <span className="truncate">{item.deliverable}</span>
-                    <ArrowRight className="w-3 h-3 text-[#FFD700] shrink-0 ml-1" />
+                    <ArrowRight className="w-3.5 h-3.5 text-amber-400 shrink-0 ml-1.5" />
                   </div>
                 </div>
               </div>

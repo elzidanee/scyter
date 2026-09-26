@@ -30,13 +30,13 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-3 sm:pt-4 px-3 sm:px-6 flex flex-col items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 pointer-events-none pt-3.5 sm:pt-4 px-3 sm:px-6 flex flex-col items-center">
       {/* Floating Island Navbar */}
       <div
         className={`pointer-events-auto w-full max-w-6xl mx-auto rounded-2xl md:rounded-full transition-all duration-300 ${
           isScrolled
-            ? "bg-[#0D0D0D]/92 backdrop-blur-xl border border-white/[0.12] shadow-[0_12px_36px_rgba(0,0,0,0.6),0_1px_1px_rgba(255,255,255,0.06)_inset] py-2 sm:py-2.5 px-4 sm:px-6"
-            : "bg-[#111111]/75 backdrop-blur-lg border border-white/[0.08] shadow-[0_8px_28px_rgba(0,0,0,0.4),0_1px_1px_rgba(255,255,255,0.04)_inset] py-2.5 sm:py-3 px-4 sm:px-6"
+            ? "bg-[#09090B]/90 backdrop-blur-xl border border-white/[0.1] shadow-[0_16px_40px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.08)] py-2 sm:py-2.5 px-4 sm:px-6"
+            : "bg-[#0F0F12]/80 backdrop-blur-lg border border-white/[0.08] shadow-[0_10px_30px_rgba(0,0,0,0.45),inset_0_1px_0_0_rgba(255,255,255,0.06)] py-2.5 sm:py-3 px-4 sm:px-6"
         }`}
       >
         <div className="flex items-center justify-between gap-4 lg:gap-8">
@@ -63,7 +63,7 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
               <a
                 key={link.label}
                 href={link.href}
-                className="px-3.5 py-1.5 text-xs xl:text-[13px] font-medium text-[#A3A3A3] hover:text-white transition-all duration-200 rounded-full hover:bg-white/[0.08] whitespace-nowrap"
+                className="px-3.5 py-1.5 text-xs xl:text-[13px] font-medium text-zinc-400 hover:text-white transition-all duration-200 rounded-full hover:bg-white/[0.06] whitespace-nowrap"
               >
                 {link.label}
               </a>
@@ -72,8 +72,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
 
           {/* 3. Right: Status Badge & Single-Line CTA Button */}
           <div className="hidden md:flex items-center gap-3 shrink-0">
-            <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#181818] border border-white/[0.08] text-xs font-medium text-[#A3A3A3] whitespace-nowrap">
-              <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
+            <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-medium text-zinc-300 whitespace-nowrap">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 ring-4 ring-emerald-400/20" />
               <span>Menerima Proyek Baru</span>
             </div>
 
@@ -85,9 +85,9 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
                   el?.scrollIntoView({ behavior: "smooth" });
                 })
               }
-              className="inline-flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2 rounded-xl md:rounded-full text-xs sm:text-sm font-bold text-[#0D0D0D] transition-all duration-300 hover:brightness-105 hover:shadow-[0_0_24px_rgba(255,215,0,0.35)] cursor-pointer whitespace-nowrap shrink-0 group"
+              className="inline-flex items-center justify-center gap-1.5 px-4 sm:px-5 py-2 rounded-xl md:rounded-full text-xs sm:text-[13px] font-bold text-[#09090B] transition-all duration-300 hover:brightness-105 active:scale-[0.98] shadow-[0_2px_14px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer whitespace-nowrap shrink-0 group"
               style={{
-                background: "linear-gradient(180deg, #FFFBE6 0%, #FFE873 40%, #FFD700 100%)",
+                background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
               }}
             >
               <span>Konsultasi Gratis</span>
@@ -99,7 +99,7 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded-xl bg-[#1A1A1A] border border-white/[0.08] text-white hover:text-[#FFD700] transition-colors focus:outline-none"
+              className="p-2 rounded-xl bg-white/[0.04] border border-white/[0.1] text-zinc-200 hover:text-white transition-colors focus:outline-none"
               aria-label="Toggle menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -110,7 +110,7 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
 
       {/* Mobile Menu Dropdown (Floating Card beneath island) */}
       {mobileMenuOpen && (
-        <div className="pointer-events-auto md:hidden w-full max-w-6xl mx-auto rounded-2xl bg-[#121212]/98 backdrop-blur-2xl border border-white/[0.1] px-5 py-5 mt-2 space-y-4 shadow-2xl">
+        <div className="pointer-events-auto md:hidden w-full max-w-6xl mx-auto rounded-2xl bg-[#0F0F12]/95 backdrop-blur-2xl border border-white/[0.1] px-5 py-5 mt-2 space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8)]">
           <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] text-xs font-medium text-[#A3A3A3] w-fit">
             <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
             <span>Menerima Proyek Baru</span>
