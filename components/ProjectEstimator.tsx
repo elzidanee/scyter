@@ -5,12 +5,12 @@ import {
   Calculator,
   Check,
   Send,
-  Sparkles,
   Calendar,
   Layers,
   ArrowRight,
   ShieldCheck,
 } from "lucide-react";
+import { MotionReveal } from "@/components/ui/motion-reveal";
 
 interface ProjectEstimatorProps {
   onProceedToForm?: (summary: string) => void;
@@ -133,22 +133,24 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
     <section id="estimator" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
-            <Calculator className="w-3.5 h-3.5 text-amber-400" />
-            <span>KALKULATOR ESTIMASI PROYEK</span>
+        <MotionReveal>
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
+              <Calculator className="w-3.5 h-3.5 text-amber-400" />
+              <span>KALKULATOR ESTIMASI PROYEK</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
+              Hitung Estimasi Biaya & Waktu <span className="gold-gradient-text">Proyek Anda</span>
+            </h2>
+            <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+              Pilih parameter kebutuhan bisnis Anda di bawah ini untuk melihat gambaran durasi pengerjaan dan estimasi biaya secara transparan tanpa biaya tersembunyi.
+            </p>
           </div>
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
-            Hitung Estimasi Biaya & Waktu <span className="gold-gradient-text">Proyek Anda</span>
-          </h2>
-          <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
-            Pilih parameter kebutuhan bisnis Anda di bawah ini untuk melihat gambaran durasi pengerjaan dan estimasi biaya secara transparan tanpa biaya tersembunyi.
-          </p>
-        </div>
+        </MotionReveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Controls Column */}
-          <div className="lg:col-span-7 space-y-7">
+          <MotionReveal delay={0.05} yOffset={20} className="lg:col-span-7 space-y-7">
             {/* Step 1: Pilihan Layanan */}
             <div className="space-y-3">
               <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
@@ -240,10 +242,105 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                 })}
               </div>
             </div>
-          </div>
+          </MotionReveal>
 
           {/* Results Column */}
-          <div className="lg:col-span-5 lg:sticky lg:top-24">
+          <MotionReveal delay={0.15} yOffset={20} className="lg:col-span-5 lg:sticky lg:top-24">
+            {/* Step 1: Pilihan Layanan */}
+            <div className="space-y-3">
+              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <span>01 // PILIH JENIS LAYANAN</span>
+              </label>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                {services.map((s) => {
+                  const isSelected = serviceType === s.id;
+                  return (
+                    <button
+                      key={s.id}
+                      onClick={() => setServiceType(s.id)}
+                      className={`p-3.5 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
+                          : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      <div className="text-xs sm:text-[13px] font-bold text-white flex items-center justify-between">
+                        <span>{s.name}</span>
+                        {isSelected && <Check className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+                      </div>
+                      <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug">{s.desc}</p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Step 2: Paket Kebutuhan */}
+            <div className="space-y-3">
+              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <span>02 // SKALA & KOMPLEKSITAS</span>
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {tiers.map((t) => {
+                  const isSelected = tier === t.id;
+                  return (
+                    <button
+                      key={t.id}
+                      onClick={() => setTier(t.id)}
+                      className={`p-4 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                        isSelected
+                          ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
+                          : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
+                      }`}
+                    >
+                      <div className="text-xs sm:text-sm font-bold text-white flex items-center justify-between">
+                        <span>{t.name}</span>
+                        {isSelected && <Check className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
+                      </div>
+                      <p className="text-[11px] text-zinc-400 mt-1 leading-relaxed">{t.desc}</p>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Step 3: Fitur Tambahan */}
+            <div className="space-y-3">
+              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+                <span>03 // FITUR & INTEGRASI TAMBAHAN (OPSIONAL)</span>
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {addons.map((a) => {
+                  const isChecked = selectedAddons.includes(a.id);
+                  return (
+                    <button
+                      key={a.id}
+                      onClick={() => toggleAddon(a.id)}
+                      className={`p-3 rounded-xl text-left border transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                        isChecked
+                          ? "bg-amber-400/[0.04] border-amber-400/50 text-white"
+                          : "bg-[#0F0F12] border-white/[0.06] text-zinc-400 hover:border-white/[0.14] hover:text-zinc-300"
+                      }`}
+                    >
+                      <span className="text-xs leading-snug">{a.name}</span>
+                      <div
+                        className={`w-4 h-4 rounded flex items-center justify-center border shrink-0 ml-3 transition-colors ${
+                          isChecked
+                            ? "bg-amber-400 border-amber-400 text-[#09090B]"
+                            : "border-white/[0.15] bg-white/[0.02]"
+                        }`}
+                      >
+                        {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          </MotionReveal>
+
+          {/* Results Column */}
+          <MotionReveal delay={0.15} yOffset={20} className="lg:col-span-5 lg:sticky lg:top-24">
             <div className="rounded-2xl bg-[#0F0F12] border border-white/[0.08] p-6 sm:p-7 shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)] space-y-5">
               <div className="flex items-center justify-between pb-4 border-b border-white/[0.06]">
                 <div>
@@ -320,7 +417,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                 *Estimasi dapat disesuaikan kembali sesuai kebutuhan spesifik Anda.
               </p>
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </div>
     </section>

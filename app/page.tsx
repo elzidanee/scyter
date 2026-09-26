@@ -29,6 +29,9 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-[#09090B] text-white flex flex-col selection:bg-amber-400 selection:text-[#09090B]">
+      {/* Top Global Scroll Progress Indicator */}
+      
+
       {/* Sticky Global Navigation */}
       <Navbar onOpenConsultation={handleOpenConsultation} />
 

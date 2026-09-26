@@ -10,6 +10,7 @@ import {
   Sparkles,
   ShieldCheck,
 } from "lucide-react";
+import { MotionReveal } from "@/components/ui/motion-reveal";
 
 interface ContactSectionProps {
   initialSummary?: string;
@@ -52,7 +53,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
           {/* Left Column: Direct Info */}
-          <div className="lg:col-span-5 space-y-6">
+          <MotionReveal delay={0.05} yOffset={24} className="lg:col-span-5 space-y-6">
             <div className="space-y-2.5">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
@@ -108,10 +109,10 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                 </div>
               </div>
             </div>
-          </div>
+          </MotionReveal>
 
           {/* Right Column: Clean Form */}
-          <div className="lg:col-span-7">
+          <MotionReveal delay={0.15} yOffset={24} className="lg:col-span-7">
             <div className="p-6 sm:p-8 rounded-2xl bg-[#0F0F12] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)]">
               {submitted ? (
                 <div className="py-12 text-center space-y-3.5">
@@ -235,7 +236,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                 </form>
               )}
             </div>
-          </div>
+          </MotionReveal>
         </div>
       </div>
     </section>
