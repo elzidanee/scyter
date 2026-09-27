@@ -35,7 +35,7 @@ export default function Home() {
       {/* Sticky Global Navigation */}
       <Navbar onOpenConsultation={handleOpenConsultation} />
 
-      {/* Main Content Sections - Clean, Professional & Linear */}
+      {/* Main Content Sections - Clen, Professional & Linear */}
       <main className="flex-1">
         {/* 1. Hero: Clear Value Proposition & Engineering Commitments */}
         <Hero onOpenConsultation={handleOpenConsultation} />
