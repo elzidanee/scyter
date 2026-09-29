@@ -93,14 +93,14 @@ export default function Services() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((item, idx) => (
             <StaggerItem key={idx}>
-              <div className="h-full rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+              <div className="h-full rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-[border-color,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] flex flex-col overflow-hidden group">
                 {/* Photo */}
                 <div className="relative h-44 overflow-hidden bg-zinc-950">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-[#0F0F12]/30 to-black/30" />

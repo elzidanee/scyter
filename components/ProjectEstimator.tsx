@@ -163,7 +163,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                     <button
                       key={s.id}
                       onClick={() => setServiceType(s.id)}
-                      className={`p-3.5 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                      className={`p-3.5 rounded-xl text-left border active:scale-[0.98] transition-[border-color,background-color,box-shadow,transform] duration-200 cursor-pointer ${
                         isSelected
                           ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
                           : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
@@ -192,7 +192,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                     <button
                       key={t.id}
                       onClick={() => setTier(t.id)}
-                      className={`p-4 rounded-xl text-left border transition-all duration-200 cursor-pointer ${
+                      className={`p-4 rounded-xl text-left border active:scale-[0.98] transition-[border-color,background-color,box-shadow,transform] duration-200 cursor-pointer ${
                         isSelected
                           ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
                           : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
@@ -221,7 +221,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                     <button
                       key={a.id}
                       onClick={() => toggleAddon(a.id)}
-                      className={`p-3 rounded-xl text-left border transition-all duration-200 flex items-center justify-between cursor-pointer ${
+                      className={`p-3 rounded-xl text-left border active:scale-[0.98] transition-[border-color,background-color,color,transform] duration-200 flex items-center justify-between cursor-pointer ${
                         isChecked
                           ? "bg-amber-400/[0.04] border-amber-400/50 text-white"
                           : "bg-[#0F0F12] border-white/[0.06] text-zinc-400 hover:border-white/[0.14] hover:text-zinc-300"
@@ -300,7 +300,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
               <div className="space-y-2.5 pt-2">
                 <button
                   onClick={handleSendWhatsApp}
-                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-all hover:brightness-105 active:scale-[0.98] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
                   style={{
                     background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
                   }}
@@ -311,7 +311,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
 
                 <button
                   onClick={handleUseForm}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-zinc-200 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:text-white transition-colors cursor-pointer group/form"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-zinc-200 bg-white/[0.03] border border-white/[0.08] hover:bg-white/[0.06] hover:text-white active:scale-[0.97] transition-[background-color,border-color,color,transform] duration-150 cursor-pointer group/form"
                 >
                   <span>Kirim ke Formulir Pesan</span>
                   <ArrowRight className="w-3.5 h-3.5 text-zinc-400 transition-transform group-form:translate-x-0.5" />

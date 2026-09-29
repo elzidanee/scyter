@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { CheckCircle2, ArrowUpRight, Cpu } from "lucide-react";
+import { MotionReveal, StaggerContainer, StaggerItem } from "@/components/ui/motion-reveal";
 
 interface SystemModule {
   image: string;
@@ -58,6 +59,7 @@ export default function TrustBar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
+        <MotionReveal>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#161616] border border-[#262626] text-[11px] font-mono text-[#D4AF37] mb-2.5">
@@ -72,13 +74,14 @@ export default function TrustBar() {
             Tanpa biaya lisensi atau royalti bulanan per pengguna. Dibangun khusus sesuai alur kerja nyata bisnis Anda dengan penyerahan source code penuh.
           </p>
         </div>
+        </MotionReveal>
 
         {/* 4 Cards Grid with Real Photos */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {systems.map((item) => (
+            <StaggerItem key={item.code}>
             <div
-              key={item.code}
-              className="rounded-2xl overflow-hidden bg-[#121212] border border-[#222222] hover:border-[#FFD700]/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group flex flex-col justify-between"
+              className="rounded-2xl overflow-hidden bg-[#121212] border border-[#222222] hover:border-[#FFD700]/50 transition-[border-color,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] hover:-translate-y-1 hover:shadow-[0_12px_32px_rgba(0,0,0,0.6)] group flex flex-col justify-between h-full"
             >
               <div>
                 {/* Real Photo Area */}
@@ -87,12 +90,12 @@ export default function TrustBar() {
                     src={item.image}
                     alt={item.name}
                     fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 25vw"
                   />
                   {/* Subtle dark gradient overlay for text readability */}
                   <div className="absolute inset-0 bg-gradient-to-t from-[#121212] via-[#121212]/30 to-transparent" />
-                  
+
                   {/* System Code Tag */}
                   <div className="absolute top-3 left-3 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md border border-white/10 text-[10px] font-mono text-white">
                     {item.code}
@@ -120,6 +123,15 @@ export default function TrustBar() {
               <div className="px-5 pb-5 pt-3 border-t border-[#1C1C1C] space-y-1.5">
                 {item.features.map((f, fIdx) => (
                   <div key={fIdx} className="flex items-center gap-1.5 text-[11px] text-[#A6A6A6]">
+                    <CheckCircle2 className="w-3 h-3 text-[#2ECC71] shrink-0" />
+                    <span className="truncate">{f}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            </StaggerItem>
+          ))}
+        </StaggerContainer>
                     <CheckCircle2 className="w-3 h-3 text-[#2ECC71] shrink-0" />
                     <span className="truncate">{f}</span>
                   </div>

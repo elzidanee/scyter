@@ -92,7 +92,7 @@ export default function Methodology() {
 
             return (
               <StaggerItem key={item.step} className="h-full">
-                <div className="h-full p-6 rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-all duration-300 flex flex-col justify-between group">
+                <div className="h-full p-6 rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-[border-color,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] flex flex-col justify-between group">
                   <div>
                     {/* Top Bar with Number & Icon */}
                     <div className="flex items-center justify-between mb-5">

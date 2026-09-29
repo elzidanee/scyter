@@ -1,6 +1,8 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight,
   ShieldCheck,
@@ -42,42 +44,89 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
     },
   ];
 
-  return (
-    <section className="relative pt-32 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#09090B]">
-      {/* Precision Engineering Grid Background - Very Subtle & Elegant */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_35%,#000_70%,transparent_100%)] pointer-events-none" />
+  const sectionRef = useRef<HTMLElement>(null);
+  const shouldReduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
 
-      {/* Subtle Ambient Glow */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[260px] bg-amber-400/[0.04] blur-[150px] rounded-full pointer-events-none" />
+  const bgY = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? ["0%", "0%"] : ["0%", "20%"]);
+  const glowY = useTransform(scrollYProgress, [0, 1], shouldReduceMotion ? ["0%", "0%"] : ["0%", "30%"]);
+  const glowOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0.2]);
+
+  const EASE_OUT = [0.23, 1, 0.32, 1] as const;
+
+  return (
+    <section ref={sectionRef} className="relative pt-32 pb-20 md:pt-36 md:pb-28 overflow-hidden bg-[#09090B]">
+      {/* Precision Engineering Grid Background with subtle scroll parallax */}
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_35%,#000_70%,transparent_100%)] pointer-events-none"
+      />
+
+      {/* Subtle Ambient Glow that drifts smoothly with scroll */}
+      <motion.div
+        style={{ y: glowY, opacity: glowOpacity }}
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[260px] bg-amber-400/[0.04] blur-[150px] rounded-full pointer-events-none"
+      />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
-          
-          {/* Left Column: Clear Value Proposition */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+
+          {/* Left Column: Clear Value Proposition with Emil Kowalski Stagger */}
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.45, ease: EASE_OUT }}
+            className="lg:col-span-7 space-y-6 text-center lg:text-left"
+          >
             
-            {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-amber-400 ring-4 ring-amber-400/20" />
-              <span className="font-mono text-amber-300 font-semibold text-[11px] tracking-wider uppercase">
-                SCYTERCORP // SOFTWARE HOUSE & SYSTEMS
+            {/* Status Pill with pulse ring */}
+            <motion.div
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.05, ease: EASE_OUT }}
+              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs shadow-sm"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-50" />
+                <span className="relative w-2 h-2 rounded-full bg-amber-400" />
               </span>
-            </div>
+              <span className="font-mono text-amber-300 font-semibold text-[11px] tracking-wider uppercase">
+                SCYTERCORP // SOFTWARE HOUSE &amp; SYSTEMS
+              </span>
+            </motion.div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-white leading-[1.12] font-[family-name:var(--font-heading)]">
+            <motion.h1
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: EASE_OUT }}
+              className="text-3xl sm:text-5xl lg:text-[54px] font-bold tracking-tight text-white leading-[1.12] font-[family-name:var(--font-heading)]"
+            >
               Membangun Solusi{" "}
-              <span className="gold-gradient-text">Web, Mobile & Sistem Bisnis</span>{" "}
+              <span className="gold-gradient-text">Web, Mobile &amp; Sistem Bisnis</span>{" "}
               Berkualitas Tinggi
-            </h1>
+            </motion.h1>
 
             {/* Value Proposition */}
-            <p className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal">
+            <motion.p
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.45, delay: 0.17, ease: EASE_OUT }}
+              className="text-sm sm:text-base text-zinc-400 leading-relaxed max-w-xl mx-auto lg:mx-0 font-normal"
+            >
               ScyterCorp merekayasa produk digital berkinerja tinggi untuk pelaku usaha, startup, dan korporasi: Website modern, aplikasi Mobile (iOS/Android), UI/UX profesional, hingga sistem kustom seperti <strong className="text-zinc-200 font-semibold">POS, CMS, LMS, dan PMS</strong> dengan kepemilikan penuh 100%.
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2">
+            <motion.div
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.24, ease: EASE_OUT }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3.5 pt-2"
+            >
               <button
                 onClick={
                   onOpenConsultation ||
@@ -86,7 +135,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
                     el?.scrollIntoView({ behavior: "smooth" });
                   })
                 }
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-all duration-300 hover:brightness-105 active:scale-[0.98] shadow-[0_2px_18px_rgba(255,215,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_18px_rgba(255,215,0,0.35),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
                 style={{
                   background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
                 }}
@@ -97,14 +146,19 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
 
               <a
                 href="#portfolio"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-zinc-200 bg-white/[0.03] border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.06] hover:text-white transition-all duration-200"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl text-xs sm:text-sm font-semibold text-zinc-200 bg-white/[0.03] border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.06] hover:text-white active:scale-[0.97] transition-[background-color,border-color,color,transform] duration-150"
               >
                 <span>Lihat Portofolio</span>
               </a>
-            </div>
+            </motion.div>
 
             {/* Service Tags */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-3 text-xs">
+            <motion.div
+              initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3, ease: EASE_OUT }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-3 text-xs"
+            >
               <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.06] text-zinc-400">
                 <Globe className="w-3.5 h-3.5 text-amber-400" />
                 Web App
@@ -121,11 +175,16 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
                 <Layers className="w-3.5 h-3.5 text-amber-400" />
                 Sistem Kustom (POS / CMS / LMS / PMS)
               </span>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
           {/* Right Column: Clean Professional Standards Card (Anti AI Slop) */}
-          <div className="lg:col-span-5">
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2, ease: EASE_OUT }}
+            className="lg:col-span-5"
+          >
             <div className="rounded-2xl bg-[#0F0F12] border border-white/[0.08] p-6 sm:p-7 space-y-6 shadow-[0_20px_50px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)] relative overflow-hidden">
               
               {/* Card Header */}
@@ -144,14 +203,17 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
                 </div>
               </div>
 
-              {/* 4 Crisp Deliverable Pillars */}
+              {/* 4 Crisp Deliverable Pillars with stagger */}
               <div className="space-y-3.5">
                 {pillars.map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <div
+                    <motion.div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-3.5 hover:border-amber-400/30 hover:bg-white/[0.04] transition-all duration-200"
+                      initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, x: 12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.35, delay: 0.3 + idx * 0.06, ease: EASE_OUT }}
+                      className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] flex items-start gap-3.5 hover:border-amber-400/30 hover:bg-white/[0.04] transition-[border-color,background-color] duration-200"
                     >
                       <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 text-amber-400 mt-0.5 shadow-sm">
                         <Icon className="w-4 h-4" />
@@ -164,7 +226,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
                           {item.desc}
                         </p>
                       </div>
-                    </div>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -176,7 +238,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Navbar from "@/components/Navbar";
+import ScrollProgress from "@/components/ScrollProgress";
 import Hero from "@/components/Hero";
 import TechMarquee from "@/components/TechMarquee";
 import Services from "@/components/Services";
@@ -30,7 +31,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#09090B] text-white flex flex-col selection:bg-amber-400 selection:text-[#09090B]">
       {/* Top Global Scroll Progress Indicator */}
-      
+      <ScrollProgress />
 
       {/* Sticky Global Navigation */}
       <Navbar onOpenConsultation={handleOpenConsultation} />

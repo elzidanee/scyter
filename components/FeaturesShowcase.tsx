@@ -37,7 +37,7 @@ export default function FeaturesShowcase() {
                     src="/images/illustrations/performance.jpg"
                     alt="Performa Kecepatan Tinggi & Arsitektur Cloud ScyterCorp"
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="object-cover transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />
@@ -163,7 +163,7 @@ export default function FeaturesShowcase() {
                     src="/images/illustrations/custom-system.jpg"
                     alt="Sistem Bisnis Kustom & Panel Kontrol ScyterCorp"
                     fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="object-cover transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority
                   />

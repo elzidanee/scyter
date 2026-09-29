@@ -1,7 +1,10 @@
 "use client";
 
-import { motion, type HTMLMotionProps } from "motion/react";
+import { motion, useReducedMotion, type HTMLMotionProps } from "motion/react";
 import React from "react";
+
+// Emil Kowalski & Apple Design canonical easing curve for UI
+const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 interface MotionRevealProps extends HTMLMotionProps<"div"> {
   children: React.ReactNode;
@@ -12,25 +15,35 @@ interface MotionRevealProps extends HTMLMotionProps<"div"> {
 }
 
 /**
- * Single element smooth scroll reveal with cubic-bezier easing
+ * Single element smooth scroll reveal with Emil Kowalski cubic-bezier easing & reduced-motion support
  */
 export function MotionReveal({
   children,
   delay = 0,
-  duration = 0.55,
-  yOffset = 24,
+  duration = 0.45,
+  yOffset = 18,
   className = "",
   ...props
 }: MotionRevealProps) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: yOffset }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={
+        shouldReduceMotion
+          ? { opacity: 0 }
+          : { opacity: 0, y: yOffset, scale: 0.98 }
+      }
+      whileInView={
+        shouldReduceMotion
+          ? { opacity: 1 }
+          : { opacity: 1, y: 0, scale: 1 }
+      }
       viewport={{ once: true, margin: "-60px" }}
       transition={{
-        duration,
+        duration: shouldReduceMotion ? 0.2 : duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: EASE_OUT,
       }}
       className={className}
       {...props}
@@ -41,12 +54,12 @@ export function MotionReveal({
 }
 
 /**
- * Container that orchestrates staggered child entrance animations smoothly
+ * Container that orchestrates staggered child entrance animations smoothly (30-80ms stagger)
  */
 export function StaggerContainer({
   children,
   className = "",
-  staggerDelay = 0.08,
+  staggerDelay = 0.06,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -78,22 +91,27 @@ export function StaggerContainer({
 export function StaggerItem({
   children,
   className = "",
-  yOffset = 20,
+  yOffset = 16,
 }: {
   children: React.ReactNode;
   className?: string;
   yOffset?: number;
 }) {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: yOffset },
+        hidden: shouldReduceMotion
+          ? { opacity: 0 }
+          : { opacity: 0, y: yOffset, scale: 0.98 },
         show: {
           opacity: 1,
           y: 0,
+          scale: 1,
           transition: {
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1],
+            duration: shouldReduceMotion ? 0.2 : 0.38,
+            ease: EASE_OUT,
           },
         },
       }}

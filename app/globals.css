@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
 :root {
+  /* Emil Kowalski Animation Tokens */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
   /* ScyterCorp Official Gold Palette */
   --gold-50: #FFFBE6;
   --gold-100: #FFF4C2;
@@ -66,6 +71,9 @@
 html {
   scroll-behavior: smooth;
   color-scheme: dark;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -77,6 +85,40 @@ body {
   selection-color: var(--ink);
 }
 
+/* Mobile-native: inputs minimum 16px to prevent iOS Safari auto-zoom */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* Apple & Emil Design: Kill double-tap delay and accidental text selection on controls */
+button, a, [role="button"], .tappable {
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Instant physical press feedback on tappable controls */
+button:active, [role="button"]:active {
+  transform: scale(0.97);
+  transition: transform 120ms var(--ease-out);
+}
+
+/* Apple typography: Optical tracking & tight display leading */
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
+}
+
+/* Accessibility: Graceful Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 ::selection {
   background-color: #FFD700;
   color: #0D0D0D;
@@ -84,17 +126,24 @@ body {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #0D0D0D;
+  background: #09090B;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2A2A;
-  border-radius: 4px;
+  background: linear-gradient(180deg, #2A2A2A, #3A3A3A);
+  border-radius: 6px;
+  border: 2px solid #09090B;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #FFD700;
+  background: linear-gradient(180deg, #FFE873, #FFD700);
+}
+
+/* Firefox scrollbar */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2A2A2A #09090B;
 }
 
 /* Ambient glow & grid patterns */

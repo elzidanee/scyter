@@ -189,7 +189,7 @@ export default function Portfolio() {
                 <button
                   key={c.id}
                   onClick={() => setActiveCategory(c.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer ${
+                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold active:scale-[0.97] transition-[background-color,color,transform] duration-150 cursor-pointer ${
                     activeCategory === c.id
                       ? "bg-amber-400 text-[#09090B] shadow-sm font-bold"
                       : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
@@ -206,14 +206,14 @@ export default function Portfolio() {
         <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((item) => (
             <StaggerItem key={item.id}>
-              <div className="h-full rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 transition-all duration-300 flex flex-col overflow-hidden group hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+              <div className="h-full rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 hover:-translate-y-1 hover:shadow-[0_20px_45px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-[border-color,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] flex flex-col overflow-hidden group">
                 {/* Real Photo Area with Clean Browser Window Chrome */}
                 <div className="relative h-56 overflow-hidden bg-zinc-950">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover object-center transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                   
@@ -360,7 +360,7 @@ export default function Portfolio() {
                 <a
                   href="#contact"
                   onClick={() => setModalProject(null)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[#09090B] font-bold text-xs hover:brightness-105 transition-all cursor-pointer shadow-sm"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[#09090B] font-bold text-xs hover:brightness-105 active:scale-[0.97] transition-[filter,transform] duration-150 cursor-pointer shadow-sm"
                   style={{
                     background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
                   }}

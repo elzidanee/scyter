@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import {
-  Send,
   MessageSquare,
   Mail,
   MapPin,
   CheckCircle2,
-  Sparkles,
   ShieldCheck,
 } from "lucide-react";
 import { MotionReveal } from "@/components/ui/motion-reveal";
@@ -29,13 +27,13 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 1000);
+    }, 800);
   };
 
   const handleDirectWhatsApp = () => {
@@ -71,20 +69,20 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
             <div className="space-y-3.5">
               <button
                 onClick={handleDirectWhatsApp}
-                className="w-full p-4 rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-emerald-400/40 hover:bg-white/[0.02] transition-all flex items-center justify-between group cursor-pointer text-left shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
+                className="w-full p-4 rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-emerald-400/40 hover:bg-white/[0.02] active:scale-[0.98] transition-[border-color,background-color,transform] duration-200 flex items-center justify-between group cursor-pointer text-left shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
               >
                 <div className="flex items-center gap-3.5">
                   <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 shrink-0">
                     <MessageSquare className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
                       Chat Langsung via WhatsApp
                     </h4>
-                    <p className="text-[11px] text-zinc-400">082233201091 · Respon cepat & konsultasi langsung</p>
+                    <p className="text-xs text-zinc-400">082233201091 · Respon cepat & konsultasi langsung</p>
                   </div>
                 </div>
-                <span className="text-xs font-semibold text-emerald-400 group-hover:translate-x-0.5 transition-transform">Chat Sekarang →</span>
+                <span className="text-xs font-semibold text-emerald-400 group-hover:translate-x-0.5 transition-transform duration-150">Chat Sekarang →</span>
               </button>
 
               <div className="p-3.5 rounded-xl bg-[#0F0F12] border border-white/[0.08] flex items-center gap-3 text-xs">
@@ -139,11 +137,12 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                       <label className="text-xs font-medium text-zinc-300">Nama Lengkap *</label>
                       <input
                         type="text"
+                        inputMode="text"
                         required
                         placeholder="Contoh: Budi Santoso"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs sm:text-sm focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
                       />
                     </div>
 
@@ -151,11 +150,12 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                       <label className="text-xs font-medium text-zinc-300">Nomor WhatsApp / HP *</label>
                       <input
                         type="tel"
+                        inputMode="tel"
                         required
                         placeholder="0812-xxxx-xxxx"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs sm:text-sm focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
                       />
                     </div>
                   </div>
@@ -165,10 +165,11 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                       <label className="text-xs font-medium text-zinc-300">Email Perusahaan / Pribadi</label>
                       <input
                         type="email"
+                        inputMode="email"
                         placeholder="nama@perusahaan.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs sm:text-sm focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
                       />
                     </div>
 
@@ -177,7 +178,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                       <select
                         value={formData.serviceType}
                         onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-xs sm:text-sm focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 transition-[border-color,box-shadow] duration-150"
                       >
                         <option>Pembuatan Website</option>
                         <option>Pembuatan Mobile App</option>
@@ -196,7 +197,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                     <select
                       value={formData.budget}
                       onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-xs sm:text-sm focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 transition-[border-color,box-shadow] duration-150"
                     >
                       <option>&lt; Rp 5 Juta</option>
                       <option>Rp 5 Juta – Rp 15 Juta</option>
@@ -214,14 +215,14 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
                       placeholder="Ceritakan fitur atau gambaran aplikasi/website yang ingin Anda bangun..."
                       value={formData.description}
                       onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-xs sm:text-sm focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 resize-none transition-all"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 resize-none transition-[border-color,box-shadow] duration-150"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-all hover:brightness-105 active:scale-[0.98] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer disabled:opacity-50"
+                    className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer disabled:opacity-50"
                     style={{
                       background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
                     }}

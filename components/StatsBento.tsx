@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatedNumber } from "@/components/ui/animated-number";
+import { MotionReveal, StaggerContainer, StaggerItem } from "@/components/ui/motion-reveal";
 import { Spotlight } from "@/components/ui/spotlight";
 import {
   CodeXml,
@@ -20,6 +21,7 @@ export default function StatsBento() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
+        <MotionReveal>
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#181818] border border-[#2B2B2B] text-[11px] text-[#FFE873]">
             <Sparkles className="w-3 h-3 text-[#FFD700]" />
@@ -32,12 +34,14 @@ export default function StatsBento() {
             Kami membangun software andal berstandar industri dengan transparansi penuh sejak hari pertama.
           </p>
         </div>
+        </MotionReveal>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
           {/* Bento Card 1: 50+ Projects (Large 2 Cols) */}
-          <div className="md:col-span-2 rounded-2xl bg-[#141414] border border-[#262626] p-7 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:border-[#FFD700]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6)]">
+          <StaggerItem className="md:col-span-2">
+          <div className="rounded-2xl bg-[#141414] border border-[#262626] p-7 flex flex-col justify-between group relative overflow-hidden hover:border-[#FFD700]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-[border-color,box-shadow] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)]">
             <Spotlight className="from-[#FFD700]/20 via-[#FFD700]/5 to-transparent" size={320} />
             
             <div>
@@ -73,9 +77,11 @@ export default function StatsBento() {
               <span className="px-2.5 py-1 rounded-md bg-[#1B1B1B] border border-[#2B2B2B]">PMS & LMS</span>
             </div>
           </div>
+          </StaggerItem>
 
           {/* Bento Card 2: 99.9% Uptime */}
-          <div className="rounded-2xl bg-[#141414] border border-[#262626] p-7 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:border-[#FFD700]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6)]">
+          <StaggerItem>
+          <div className="rounded-2xl bg-[#141414] border border-[#262626] p-7 flex flex-col justify-between group relative overflow-hidden hover:border-[#FFD700]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-[border-color,box-shadow] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)]">
             <Spotlight className="from-[#FFD700]/20 via-[#FFD700]/5 to-transparent" size={260} />
 
             <div>
@@ -103,9 +109,11 @@ export default function StatsBento() {
               <span>Monitoring Real-time</span>
             </div>
           </div>
+          </StaggerItem>
 
           {/* Bento Card 3: 100% Code Ownership */}
-          <div className="rounded-2xl bg-[#141414] border border-[#262626] p-7 flex flex-col justify-between group relative overflow-hidden transition-all duration-300 hover:border-[#FFD700]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6)]">
+          <StaggerItem>
+          <div className="rounded-2xl bg-[#141414] border border-[#262626] p-7 flex flex-col justify-between group relative overflow-hidden hover:border-[#FFD700]/50 hover:shadow-[0_12px_36px_rgba(0,0,0,0.6)] transition-[border-color,box-shadow] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)]">
             <Spotlight className="from-[#FFD700]/20 via-[#FFD700]/5 to-transparent" size={260} />
 
             <div>
@@ -133,9 +141,11 @@ export default function StatsBento() {
               <span>Zero Vendor Lock-In</span>
             </div>
           </div>
+          </StaggerItem>
 
           {/* Bento Card 4: Rapid SLA & Communication (Full width row on mobile, 4 cols span on desktop) */}
-          <div className="md:col-span-3 lg:col-span-4 rounded-2xl bg-gradient-to-r from-[#161616] via-[#141414] to-[#161616] border border-[#2A2A2A] p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative overflow-hidden hover:border-[#FFD700]/40 transition-colors">
+          <StaggerItem className="md:col-span-3 lg:col-span-4">
+          <div className="rounded-2xl bg-gradient-to-r from-[#161616] via-[#141414] to-[#161616] border border-[#2A2A2A] p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center justify-between gap-6 relative overflow-hidden hover:border-[#FFD700]/40 transition-[border-color] duration-300">
             <Spotlight className="from-[#FFD700]/15 via-[#FFD700]/5 to-transparent" size={400} />
 
             <div className="flex items-start gap-4">
@@ -160,15 +170,16 @@ export default function StatsBento() {
             <div className="flex items-center gap-3 shrink-0">
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFD700] text-[#0D0D0D] font-bold text-xs hover:bg-[#FFE873] transition-all cursor-pointer shadow-[0_0_15px_rgba(255,215,0,0.2)]"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-[#FFD700] text-[#0D0D0D] font-bold text-xs hover:bg-[#FFE873] active:scale-[0.97] transition-[background-color,transform] duration-150 cursor-pointer shadow-[0_0_15px_rgba(255,215,0,0.2)]"
               >
                 <span>Konsultasikan Kebutuhan</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>
           </div>
+          </StaggerItem>
 
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

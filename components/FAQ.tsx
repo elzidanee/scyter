@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { ChevronDown, HelpCircle } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 
 export default function FAQ() {
@@ -55,7 +56,7 @@ export default function FAQ() {
               return (
                 <div
                   key={index}
-                  className={`rounded-2xl bg-[#0F0F12] border transition-all duration-200 overflow-hidden ${
+                  className={`rounded-2xl bg-[#0F0F12] border transition-[border-color,box-shadow] duration-200 ease-out overflow-hidden ${
                     isOpen
                       ? "border-amber-400/40 shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
                       : "border-white/[0.08] hover:border-white/[0.16]"
@@ -63,22 +64,32 @@ export default function FAQ() {
                 >
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-semibold text-white hover:text-amber-200 transition-colors cursor-pointer text-sm sm:text-base gap-4"
+                    className="w-full flex items-center justify-between p-5 sm:p-6 text-left font-semibold text-white hover:text-amber-200 active:scale-[0.99] transition-[color,transform] duration-150 cursor-pointer text-sm sm:text-base gap-4"
                   >
                     <span className="leading-snug">{faq.q}</span>
                     <div
-                      className={`w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 text-amber-400 transition-transform duration-200 ${
+                      className={`w-7 h-7 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 text-amber-400 transition-[transform,background-color,border-color] duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
                         isOpen ? "rotate-180 bg-amber-400/10 border-amber-400/30" : ""
                       }`}
                     >
                       <ChevronDown className="w-4 h-4" />
                     </div>
                   </button>
-                  {isOpen && (
-                    <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-white/[0.06] font-normal">
-                      {faq.a}
-                    </div>
-                  )}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-zinc-400 leading-relaxed border-t border-white/[0.06] font-normal">
+                          {faq.a}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               );
             })}
