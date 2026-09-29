@@ -1,146 +1,137 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { MotionReveal, StaggerContainer, StaggerItem } from "@/components/ui/motion-reveal";
 
 const services = [
   {
     image: "/images/service-web.jpg",
-    badge: "Layanan Populer",
-    title: "Pembuatan Website",
-    desc: "Website company profile, landing page, hingga toko online yang cepat, responsif, dan mudah ditemukan di Google.",
-    features: [
-      "Company Profile & Landing Page",
-      "Website Toko Online / Katalog",
-      "Desain Eksklusif & Responsive",
-      "Optimasi Kecepatan & SEO Google",
-    ],
-    tech: "Next.js · React · WordPress / Kustom",
+    number: "01",
+    category: "WEB ENGINEERING",
+    title: "Website Modern & Web Application",
+    desc: "Kami membangun website berkinerja tinggi mulai dari company profile korporasi, portal berita, hingga web app interaktif yang cepat, responsif di semua perangkat, dan teroptimasi penuh untuk SEO Google.",
+    tags: ["Next.js 16 SSR", "SEO Google 95+", "Company Profile", "Katalog & E-Commerce", "Admin CMS"],
+    tech: "Next.js · React · TypeScript · Tailwind CSS",
   },
   {
     image: "/images/service-mobile.jpg",
-    badge: "Android & iOS",
-    title: "Pembuatan Mobile App",
-    desc: "Aplikasi mobile yang ringan, intuitif, dan responsif untuk memperluas jangkauan pelanggan bisnis Anda.",
-    features: [
-      "Aplikasi Bisnis & Layanan Jasa",
-      "Push Notification & WhatsApp",
-      "Aplikasi Toko & Reservasi",
-      "Rilis ke Google Play & App Store",
-    ],
-    tech: "Flutter · React Native · Firebase",
+    number: "02",
+    category: "MOBILE DEVELOPMENT",
+    title: "Aplikasi Mobile Android & iOS",
+    desc: "Aplikasi mobile native & cross-platform dengan navigasi fluida, animasi 60 FPS, dan pengalaman sentuh yang intuitif. Terintegrasi penuh dengan push notification, payment gateway, dan rilis resmi ke App Store & Google Play.",
+    tags: ["Flutter", "React Native", "Google Play & App Store", "Push Notification", "Payment Gateway"],
+    tech: "Flutter · React Native · Firebase · Go Microservices",
   },
   {
     image: "/images/service-uiux.jpg",
-    badge: "Visual & Experience",
-    title: "UI/UX Design",
-    desc: "Perancangan tampilan aplikasi dan website yang memikat, user-friendly, dan nyaman untuk pengguna Anda.",
-    features: [
-      "Desain Figma Interaktif & Prototype",
-      "Redesign Tampilan Aplikasi Lama",
-      "Design System Siap Koding",
-      "Uji Kenyamanan Navigasi",
-    ],
-    tech: "Figma · Design Tokens · Prototyping",
+    number: "03",
+    category: "DESIGN ENGINEERING",
+    title: "UI/UX & Interactive Design System",
+    desc: "Perancangan pengalaman antarmuka visual yang modern, bersih, dan berorientasi konversi. Setiap wireframe, prototipe interaktif di Figma, dan design token dirancang rapi agar siap diimplementasikan engineer dengan presisi 1:1.",
+    tags: ["Interactive Figma Prototype", "Design Tokens", "Redesign Aplikasi", "Design System", "User Journey"],
+    tech: "Figma · Design Tokens · Motion Prototyping",
   },
   {
     image: "/images/service-system.jpg",
-    badge: "Kustom Sesuai Bisnis",
-    title: "Custom System",
-    desc: "Sistem operasional kustom — POS, CMS, LMS, PMS — tanpa biaya langganan bulanan ke vendor pihak ketiga.",
-    features: [
-      "Kasir (POS) Toko, Resto & Inventaris",
-      "CMS Pengelolaan Konten & Media",
-      "LMS Kursus Online & Ujian Digital",
-      "PMS Manajemen Properti & Proyek",
-    ],
-    tech: "Kustom Sesuai Kebutuhan Anda",
+    number: "04",
+    category: "ENTERPRISE AUTOMATION",
+    title: "Sistem Kustom (POS, CMS, LMS, PMS)",
+    desc: "Sistem perangkat lunak operasional yang dibangun khusus mengikuti alur kerja unik bisnis Anda. Tanpa biaya sewa atau royalti bulanan per user — seluruh source code, database, dan hak cipta diserahkan 100% kepada Anda.",
+    tags: ["Kasir POS & Barcode", "Headless CMS", "LMS Kelas Video & Ujian", "PMS Manajemen Sewa", "Multi-Cabang"],
+    tech: "PostgreSQL · Redis · Docker · Node.js · Cloud VPS",
   },
 ];
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
+    <section id="services" className="py-28 md:py-36 bg-[#09090B] relative overflow-hidden border-t border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        {/* Section Header */}
+        
+        {/* Section Header (Clean Studio Editorial Style) */}
         <MotionReveal>
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12 gap-4">
-            <div className="space-y-2 max-w-xl">
-              <span className="text-xs uppercase font-mono tracking-widest text-amber-300 font-semibold">
-                LAYANAN UTAMA
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 pb-8 border-b border-white/[0.08]">
+            <div className="max-w-2xl space-y-3">
+              <span className="text-[11px] uppercase font-mono tracking-widest text-amber-400 font-semibold">
+                KAPABILITAS &amp; LAYANAN UTAMA
               </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
-                Solusi Digital yang{" "}
-                <span className="gold-gradient-text">Fokus & Tepat Sasaran</span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.03em] font-[family-name:var(--font-heading)]">
+                Rekayasa digital yang fokus pada{" "}
+                <span className="gold-gradient-text">efisiensi &amp; hasil nyata.</span>
               </h2>
-              <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-                Kami mentransformasikan kebutuhan bisnis Anda ke dalam produk digital berkualitas tinggi — dari nol hingga siap pakai dengan kepemilikan penuh.
-              </p>
             </div>
 
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-amber-300 hover:text-amber-200 transition-colors self-start sm:self-end group"
-            >
-              <span>Konsultasikan Kebutuhan Anda</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-            </a>
+            <p className="text-sm text-zinc-400 max-w-md leading-relaxed font-normal">
+              Kami mentransformasikan visi bisnis Anda ke dalam produk digital siap rilis — terstruktur dari fondasi arsitektur hingga serah terima source code 100%.
+            </p>
           </div>
         </MotionReveal>
 
-        {/* 4 Cards with Photos Staggered */}
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        {/* 2x2 Clean Spacious Grid (No Cramped Card Boxes) */}
+        <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
           {services.map((item, idx) => (
             <StaggerItem key={idx}>
-              <div className="h-full rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-amber-400/40 hover:-translate-y-1 hover:shadow-[0_20px_40px_rgba(0,0,0,0.65),inset_0_1px_0_0_rgba(255,255,255,0.06)] transition-[border-color,box-shadow,transform] duration-300 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] flex flex-col overflow-hidden group">
-                {/* Photo */}
-                <div className="relative h-44 overflow-hidden bg-zinc-950">
+              <div className="group space-y-6">
+                
+                {/* Visual Showcase Container with Crisp Aspect Ratio */}
+                <div className="relative aspect-[16/10] w-full rounded-2xl overflow-hidden bg-zinc-950 border border-white/[0.08] shadow-[0_12px_32px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.06)]">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 25vw"
+                    className="object-cover object-center transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
+                    sizes="(max-width: 1024px) 100vw, 50vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-[#0F0F12]/30 to-black/30" />
-                  <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 text-[10px] font-mono font-medium text-amber-300 shadow-sm">
-                    {item.badge}
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/80 via-transparent to-transparent pointer-events-none" />
+
+                  {/* Corner Number Badge */}
+                  <div className="absolute top-4 left-4 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 font-mono text-[11px] text-amber-300 font-semibold shadow-sm">
+                    {item.number} &middot; {item.category}
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-5 flex flex-col flex-1 justify-between">
-                  <div>
-                    <h3 className="text-base font-bold text-white group-hover:text-amber-200 transition-colors font-[family-name:var(--font-heading)]">
+                {/* Text Description & Metadata */}
+                <div className="space-y-3.5">
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-200 transition-colors duration-200 font-[family-name:var(--font-heading)] tracking-tight">
                       {item.title}
                     </h3>
-                    <p className="text-xs text-zinc-400 mt-2 leading-relaxed">
-                      {item.desc}
-                    </p>
-
-                    {/* Feature Bullets */}
-                    <div className="mt-4 pt-4 border-t border-white/[0.06] space-y-2">
-                      {item.features.map((feat, fIdx) => (
-                        <div key={fIdx} className="flex items-start gap-2 text-xs text-zinc-300">
-                          <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
-                          <span className="leading-snug">{feat}</span>
-                        </div>
-                      ))}
-                    </div>
+                    <a
+                      href="#contact"
+                      className="shrink-0 w-8 h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-400 group-hover:text-amber-300 group-hover:border-amber-400/40 group-hover:bg-amber-400/[0.06] transition-[border-color,background-color,color] duration-150 active:scale-95"
+                      aria-label={`Konsultasi ${item.title}`}
+                    >
+                      <ArrowUpRight className="w-4 h-4" />
+                    </a>
                   </div>
 
-                  {/* Bottom Tech */}
-                  <div className="mt-5 pt-3.5 border-t border-white/[0.06]">
-                    <span className="text-[10px] text-zinc-400 block font-mono bg-white/[0.02] px-2.5 py-1.5 rounded-lg border border-white/[0.05]">
-                      {item.tech}
-                    </span>
+                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
+                    {item.desc}
+                  </p>
+
+                  {/* Pill Tags (Clean Minimalist Capabilities) */}
+                  <div className="flex flex-wrap gap-1.5 pt-1">
+                    {item.tags.map((tag, tIdx) => (
+                      <span
+                        key={tIdx}
+                        className="px-2.5 py-1 rounded-md text-[11px] font-mono text-zinc-300 bg-white/[0.03] border border-white/[0.06]"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+
+                  {/* Tech stack line */}
+                  <div className="pt-2 text-[11px] font-mono text-zinc-500">
+                    Fondasi: <span className="text-zinc-400">{item.tech}</span>
                   </div>
                 </div>
+
               </div>
             </StaggerItem>
           ))}
         </StaggerContainer>
+
       </div>
     </section>
   );
