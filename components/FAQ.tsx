@@ -32,16 +32,16 @@ export default function FAQ() {
   ];
 
   return (
-    <section id="faq" className="py-28 md:py-36 bg-[#09090B] relative overflow-hidden border-t border-white/[0.08]">
+    <section id="faq" className="py-16 sm:py-24 md:py-36 bg-[#09090B] relative overflow-hidden border-t border-white/[0.08]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         
         {/* Section Header */}
         <MotionReveal>
-          <div className="mb-16 space-y-3 pb-8 border-b border-white/[0.08]">
-            <span className="text-[11px] uppercase font-mono tracking-widest text-amber-400 font-semibold">
+          <div className="mb-10 space-y-2 sm:space-y-3 pb-6 sm:mb-16 sm:pb-8 border-b border-white/[0.08]">
+            <span className="text-[10px] sm:text-[11px] uppercase font-mono tracking-widest text-amber-400 font-semibold">
               TANYA JAWAB // FAQ
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.03em] font-[family-name:var(--font-heading)]">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-bold text-white tracking-[-0.03em] font-[family-name:var(--font-heading)] leading-snug">
               Transparansi penuh mengenai kepemilikan,{" "}
               <span className="gold-gradient-text">timeline &amp; garansi.</span>
             </h2>
@@ -54,24 +54,24 @@ export default function FAQ() {
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index;
               return (
-                <div key={index} className="py-6 sm:py-7 group">
+                <div key={index} className="py-4 sm:py-6 group">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : index)}
-                    className="w-full flex items-center justify-between text-left transition-colors duration-150 cursor-pointer gap-6"
+                    className="w-full flex items-center justify-between text-left transition-colors duration-150 cursor-pointer gap-4 sm:gap-6"
                   >
-                    <span className={`text-base sm:text-xl font-medium tracking-tight transition-colors duration-150 ${
+                    <span className={`text-sm sm:text-lg font-medium tracking-tight transition-colors duration-150 ${
                       isOpen ? "text-amber-300 font-semibold" : "text-zinc-100 group-hover:text-white"
                     }`}>
                       {faq.q}
                     </span>
                     <div
-                      className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-[transform,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
+                      className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 transition-[transform,border-color,background-color] duration-200 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] ${
                         isOpen
                           ? "border-amber-400/40 bg-amber-400/10 text-amber-300 rotate-180"
                           : "border-white/[0.1] bg-white/[0.02] text-zinc-400 group-hover:border-white/[0.2] group-hover:text-white"
                       }`}
                     >
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                     </div>
                   </button>
 
@@ -84,7 +84,7 @@ export default function FAQ() {
                         transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                         className="overflow-hidden"
                       >
-                        <div className="pt-4 pr-12 text-sm sm:text-base text-zinc-400 leading-relaxed font-normal">
+                        <div className="pt-3 sm:pt-4 pr-4 sm:pr-12 text-xs sm:text-base text-zinc-400 leading-relaxed font-normal">
                           {faq.a}
                         </div>
                       </motion.div>

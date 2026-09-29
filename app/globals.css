@@ -115,6 +115,15 @@ h1, h2, h3 {
   font-optical-sizing: auto;
 }
 
+/* Hide scrollbar for clean horizontal swipe on mobile */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Accessibility: Graceful Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *, ::before, ::after {

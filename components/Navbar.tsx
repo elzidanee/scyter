@@ -156,8 +156,8 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
             }}
             className="pointer-events-auto md:hidden w-full max-w-6xl mx-auto rounded-2xl border border-white/[0.1] px-5 py-5 mt-2 space-y-4 shadow-[0_20px_50px_rgba(0,0,0,0.8)]"
           >
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#1A1A1A] border border-[#2A2A2A] text-xs font-medium text-[#A3A3A3] w-fit">
-              <span className="w-2 h-2 rounded-full bg-[#2ECC71]" />
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-xs font-medium text-zinc-300 w-fit">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 ring-2 ring-emerald-400/20" />
               <span>Menerima Proyek Baru</span>
             </div>
 
@@ -167,14 +167,14 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block px-3 py-2 text-sm font-medium text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                  className="block px-3 py-2 text-sm font-medium text-zinc-200 hover:text-white hover:bg-white/[0.06] rounded-xl transition-colors"
                 >
                   {link.label}
                 </a>
               ))}
             </div>
 
-            <div className="pt-2 border-t border-[#2A2A2A]">
+            <div className="pt-2 border-t border-white/[0.08]">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
@@ -185,9 +185,9 @@ export default function Navbar({ onOpenConsultation }: NavbarProps) {
                     el?.scrollIntoView({ behavior: "smooth" });
                   }
                 }}
-                className="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-[#0D0D0D] transition-transform active:scale-[0.97] hover:brightness-105"
+                className="w-full flex items-center justify-center gap-2 py-3 rounded-full text-xs font-bold text-[#09090B] transition-transform active:scale-[0.97] hover:brightness-105 shadow-sm"
                 style={{
-                  background: "linear-gradient(180deg, #FFFBE6 0%, #FFE873 40%, #FFD700 100%)",
+                  background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
                 }}
               >
                 <span>Jadwalkan Konsultasi Gratis</span>

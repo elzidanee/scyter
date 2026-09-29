@@ -3,11 +3,11 @@ import { Mail, Phone, MapPin } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#09090B] border-t border-white/[0.06] text-zinc-400 pt-16 pb-12">
+    <footer className="bg-[#09090B] border-t border-white/[0.06] text-zinc-400 pt-12 pb-10 sm:pt-16 sm:pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-14">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-7 sm:gap-8 lg:gap-10 mb-10 sm:mb-14">
           {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-5">
+          <div className="col-span-2 space-y-4 sm:space-y-5">
             <a href="#" aria-label="ScyterCorp - Kembali ke atas" className="inline-block group cursor-pointer">
               <div className="relative h-9 w-44 transition-transform duration-300 group-hover:scale-[1.02]">
                 <Image
@@ -141,12 +141,12 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Nav Column 3: Kontak & Kantor */}
-          <div className="space-y-3.5">
+          {/* Nav Column 3: Kantor & Kontak */}
+          <div className="col-span-2 sm:col-span-1 space-y-3 sm:space-y-3.5 pt-2 sm:pt-0">
             <h4 className="text-xs font-mono font-bold uppercase tracking-wider text-zinc-200">
-              Kantor & Kontak
+              Kantor &amp; Kontak
             </h4>
-            <ul className="space-y-3 text-xs text-zinc-400">
+            <ul className="space-y-2.5 sm:space-y-3 text-xs text-zinc-400">
               <li className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-amber-400 mt-0.5 shrink-0" />
                 <span>Malang, Jawa Timur, Indonesia</span>
@@ -173,11 +173,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom legal line */}
-        <div className="pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-500 font-mono">
+        <div className="pt-6 sm:pt-8 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4 text-[11px] sm:text-xs text-zinc-500 font-mono text-center sm:text-left">
           <p>© 2026 ScyterCorp. All rights reserved.</p>
-          <div className="flex items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <span className="hover:text-zinc-300 cursor-pointer transition-colors">Kebijakan Privasi</span>
-            <span className="hover:text-zinc-300 cursor-pointer transition-colors">Syarat & Ketentuan</span>
+            <span className="hover:text-zinc-300 cursor-pointer transition-colors">Syarat &amp; Ketentuan</span>
             <span className="hover:text-zinc-300 cursor-pointer transition-colors">Standar NDA</span>
           </div>
         </div>

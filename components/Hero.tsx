@@ -55,7 +55,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
   const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
   return (
-    <section ref={sectionRef} className="relative pt-36 pb-24 md:pt-48 md:pb-32 overflow-hidden bg-[#09090B]">
+    <section ref={sectionRef} className="relative pt-28 pb-14 sm:pt-36 sm:pb-24 md:pt-48 md:pb-32 overflow-hidden bg-[#09090B]">
       {/* Precision Background Accent */}
       <motion.div
         style={{ y: bgY }}
@@ -65,36 +65,20 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
       {/* Ambient Radial Spotlight */}
       <motion.div
         style={{ opacity: glowOpacity }}
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-amber-400/[0.04] blur-[160px] rounded-full pointer-events-none"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[340px] sm:w-[700px] h-[200px] sm:h-[300px] bg-amber-400/[0.04] blur-[100px] sm:blur-[160px] rounded-full pointer-events-none"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Headline & Value Proposition (Clean Editorial Agency Style) */}
-        <div className="max-w-4xl mx-auto text-center space-y-7">
+        <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
           
-          {/* Availability Status Badge */}
-          <motion.div
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, ease: EASE_OUT }}
-            className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs shadow-sm"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60" />
-              <span className="relative w-2 h-2 rounded-full bg-emerald-400" />
-            </span>
-            <span className="text-zinc-300 font-mono text-[11px] tracking-wide">
-              SOFTWARE HOUSE &middot; TERSEDIA UNTUK PROYEK BARU 2026
-            </span>
-          </motion.div>
-
-          {/* Hero Headline (Editorial Scale) */}
+          {/* Hero Headline (Clean Responsive Editorial Scale) */}
           <motion.h1
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.45, delay: 0.08, ease: EASE_OUT }}
-            className="text-4xl sm:text-6xl lg:text-[68px] font-bold text-white tracking-[-0.035em] leading-[1.08] font-[family-name:var(--font-heading)]"
+            transition={{ duration: 0.45, ease: EASE_OUT }}
+            className="text-[30px] sm:text-5xl lg:text-[66px] font-bold text-white tracking-[-0.03em] sm:tracking-[-0.035em] leading-[1.12] sm:leading-[1.08] font-[family-name:var(--font-heading)]"
           >
             Membangun produk digital &amp;{" "}
             <span className="gold-gradient-text">sistem bisnis</span> dengan standar craft tertinggi.
@@ -104,8 +88,8 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           <motion.p
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.16, ease: EASE_OUT }}
-            className="text-base sm:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed font-normal"
+            transition={{ duration: 0.4, delay: 0.08, ease: EASE_OUT }}
+            className="text-xs sm:text-base md:text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed font-normal px-1 sm:px-0"
           >
             ScyterCorp merekayasa website modern, aplikasi mobile iOS &amp; Android, serta sistem operasional kustom (<span className="text-zinc-200">POS, CMS, LMS, PMS</span>) dengan arsitektur siap skala dan 100% kepemilikan kode tanpa biaya langganan bulanan.
           </motion.p>
@@ -114,8 +98,8 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
           <motion.div
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35, delay: 0.22, ease: EASE_OUT }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2"
+            transition={{ duration: 0.35, delay: 0.16, ease: EASE_OUT }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-2.5 sm:gap-3.5 pt-2 w-full max-w-xs sm:max-w-none mx-auto"
           >
             <button
               onClick={
@@ -125,7 +109,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
                   el?.scrollIntoView({ behavior: "smooth" });
                 })
               }
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_18px_rgba(255,215,0,0.32),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_18px_rgba(255,215,0,0.32),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer group"
               style={{
                 background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
               }}
@@ -136,7 +120,7 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
 
             <a
               href="#portfolio"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full text-xs sm:text-sm font-semibold text-zinc-300 bg-white/[0.03] border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.06] hover:text-white active:scale-[0.97] transition-[background-color,border-color,color,transform] duration-150"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full text-xs sm:text-sm font-semibold text-zinc-300 bg-white/[0.03] border border-white/[0.1] hover:border-white/[0.2] hover:bg-white/[0.06] hover:text-white active:scale-[0.97] transition-[background-color,border-color,color,transform] duration-150 text-center"
             >
               <span>Eksplorasi Karya Kami</span>
             </a>
@@ -144,27 +128,27 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
 
         </div>
 
-        {/* Studio Assurance Bar: Clean, open columns with subtle hairline top border (No Card Overload) */}
+        {/* Studio Assurance Bar: Clean 2-col on mobile, 4-col on desktop with subtle hairline top border */}
         <motion.div
           initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.45, delay: 0.3, ease: EASE_OUT }}
-          className="mt-20 pt-10 border-t border-white/[0.08]"
+          transition={{ duration: 0.45, delay: 0.22, ease: EASE_OUT }}
+          className="mt-12 sm:mt-16 md:mt-20 pt-8 sm:pt-10 border-t border-white/[0.08]"
         >
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-10">
             {pillars.map((item, idx) => {
               const Icon = item.icon;
               return (
-                <div key={idx} className="space-y-2 group">
-                  <div className="flex items-center gap-2 text-zinc-500 font-mono text-[11px]">
+                <div key={idx} className="space-y-1.5 sm:space-y-2 group">
+                  <div className="flex items-center gap-1.5 sm:gap-2 text-zinc-500 font-mono text-[10px] sm:text-[11px]">
                     <span className="text-amber-400 font-bold">{item.number}</span>
                     <span className="w-1 h-1 rounded-full bg-zinc-700" />
-                    <Icon className="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-400 transition-colors duration-150" />
+                    <Icon className="w-3.5 h-3.5 text-zinc-400 group-hover:text-amber-400 transition-colors duration-150 shrink-0" />
                   </div>
-                  <h3 className="text-sm font-semibold text-zinc-100 font-[family-name:var(--font-heading)]">
+                  <h3 className="text-xs sm:text-sm font-semibold text-zinc-100 font-[family-name:var(--font-heading)] leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs text-zinc-400 leading-relaxed font-normal">
+                  <p className="text-[11px] sm:text-xs text-zinc-400 leading-relaxed font-normal line-clamp-2 sm:line-clamp-none">
                     {item.desc}
                   </p>
                 </div>

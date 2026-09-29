@@ -49,18 +49,18 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
+    <section id="contact" className="py-14 sm:py-20 md:py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14">
           {/* Left Column: Direct Info */}
-          <MotionReveal delay={0.05} yOffset={24} className="lg:col-span-5 space-y-6">
-            <div className="space-y-2.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
+          <MotionReveal delay={0.05} yOffset={24} className="lg:col-span-5 space-y-4 sm:space-y-6">
+            <div className="space-y-2 sm:space-y-2.5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[10px] sm:text-xs font-mono text-amber-300 font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                <span>KONSULTASI & DISKUSI TEKNIS</span>
+                <span>KONSULTASI &amp; DISKUSI TEKNIS</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
-                Konsultasikan Ide & <span className="gold-gradient-text">Kebutuhan Bisnis Anda</span>
+              <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)] leading-snug">
+                Konsultasikan Ide &amp; <span className="gold-gradient-text">Kebutuhan Bisnis Anda</span>
               </h2>
               <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
                 Ceritakan kebutuhan website, aplikasi, desain, atau sistem kustom yang ingin Anda bangun. Tim engineer kami siap mendiskusikan arsitektur dan penawaran terbaik.
@@ -68,44 +68,44 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
             </div>
 
             {/* Direct WhatsApp button */}
-            <div className="space-y-3.5">
+            <div className="space-y-2.5 sm:space-y-3.5">
               <button
                 onClick={handleDirectWhatsApp}
-                className="w-full p-4 rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-emerald-400/40 hover:bg-white/[0.02] active:scale-[0.98] transition-[border-color,background-color,transform] duration-200 flex items-center justify-between group cursor-pointer text-left shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
+                className="w-full p-3.5 sm:p-4 rounded-xl sm:rounded-2xl bg-[#0F0F12] border border-white/[0.08] hover:border-emerald-400/40 hover:bg-white/[0.02] active:scale-[0.98] transition-[border-color,background-color,transform] duration-200 flex items-center justify-between group cursor-pointer text-left shadow-[0_12px_32px_rgba(0,0,0,0.5)]"
               >
-                <div className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 shrink-0">
-                    <MessageSquare className="w-5 h-5" />
+                <div className="flex items-center gap-3 sm:gap-3.5">
+                  <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-emerald-400/10 border border-emerald-400/20 flex items-center justify-center text-emerald-400 shrink-0">
+                    <MessageSquare className="w-4 h-4 sm:w-5 sm:h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
+                    <h4 className="text-xs sm:text-sm font-bold text-white group-hover:text-emerald-300 transition-colors">
                       Chat Langsung via WhatsApp
                     </h4>
-                    <p className="text-xs text-zinc-400">082233201091 · Respon cepat & konsultasi langsung</p>
+                    <p className="text-[11px] sm:text-xs text-zinc-400">082233201091 · Respon cepat &amp; konsultasi langsung</p>
                   </div>
                 </div>
-                <span className="text-xs font-semibold text-emerald-400 group-hover:translate-x-0.5 transition-transform duration-150">Chat Sekarang →</span>
+                <span className="text-[11px] sm:text-xs font-semibold text-emerald-400 group-hover:translate-x-0.5 transition-transform duration-150 shrink-0">Chat →</span>
               </button>
 
-              <div className="p-3.5 rounded-xl bg-[#0F0F12] border border-white/[0.08] flex items-center gap-3 text-xs">
-                <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-amber-400 shrink-0">
-                  <Mail className="w-4 h-4" />
+              <div className="p-3 sm:p-3.5 rounded-xl bg-[#0F0F12] border border-white/[0.08] flex items-center gap-3 text-xs">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-amber-400 shrink-0">
+                  <Mail className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
                 <div>
-                  <span className="text-zinc-500 font-mono text-[11px] block">EMAIL RESMI</span>
-                  <a href="mailto:scyter.corp@gmail.com" className="text-zinc-200 hover:text-amber-300 transition-colors font-medium">
+                  <span className="text-zinc-500 font-mono text-[10px] sm:text-[11px] block">EMAIL RESMI</span>
+                  <a href="mailto:scyter.corp@gmail.com" className="text-zinc-200 hover:text-amber-300 transition-colors font-medium text-xs">
                     scyter.corp@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className="p-3.5 rounded-xl bg-[#0F0F12] border border-white/[0.08] flex items-center gap-3 text-xs">
-                <div className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-blue-400 shrink-0">
-                  <MapPin className="w-4 h-4" />
+              <div className="p-3 sm:p-3.5 rounded-xl bg-[#0F0F12] border border-white/[0.08] flex items-center gap-3 text-xs">
+                <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-blue-400 shrink-0">
+                  <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                 </div>
                 <div>
-                  <span className="text-zinc-500 font-mono text-[11px] block">LOKASI KANTOR</span>
-                  <span className="text-zinc-200 font-medium">Malang, Jawa Timur, Indonesia</span>
+                  <span className="text-zinc-500 font-mono text-[10px] sm:text-[11px] block">LOKASI KANTOR</span>
+                  <span className="text-zinc-200 font-medium text-xs">Malang, Jawa Timur, Indonesia</span>
                 </div>
               </div>
             </div>
@@ -113,7 +113,7 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
 
           {/* Right Column: Clean Form */}
           <MotionReveal delay={0.15} yOffset={24} className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0F0F12] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)] min-h-[460px] flex flex-col justify-center">
+            <div className="p-5 sm:p-8 rounded-2xl bg-[#0F0F12] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)] min-h-0 sm:min-h-[460px] flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div

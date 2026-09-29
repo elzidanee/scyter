@@ -177,7 +177,7 @@ export default function Portfolio() {
       : projects.filter((p) => p.category === activeCategory);
 
   return (
-    <section id="portfolio" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
+    <section id="portfolio" className="py-14 sm:py-20 md:py-28 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       {/* Precision Grid Accent */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
 
@@ -185,29 +185,29 @@ export default function Portfolio() {
         
         {/* Section Header */}
         <MotionReveal>
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-5 sm:gap-6 mb-8 sm:mb-12">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[11px] font-mono text-amber-300 mb-2.5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[10px] sm:text-[11px] font-mono text-amber-300 mb-2 sm:mb-2.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-                <span>SELECTED CASE STUDIES & SYSTEMS</span>
+                <span>SELECTED CASE STUDIES &amp; SYSTEMS</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
-                Karya Rekayasa <span className="gold-gradient-text">Software & Solusi Nyata</span>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
+                Karya Rekayasa <span className="gold-gradient-text">Software &amp; Solusi Nyata</span>
               </h2>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-2 max-w-xl leading-relaxed">
+              <p className="text-xs sm:text-sm text-zinc-400 mt-1.5 sm:mt-2 max-w-xl leading-relaxed">
                 Setiap proyek dirancang khusus dari nol untuk menjawab tantangan operasional dan mendorong pertumbuhan bisnis klien secara nyata.
               </p>
             </div>
 
-            {/* Category Filter Segmented Control */}
-            <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-[#121215] border border-white/[0.08] relative">
+            {/* Category Filter Segmented Control (Smooth horizontal scroll on mobile) */}
+            <div className="flex overflow-x-auto no-scrollbar gap-1 p-1 rounded-xl bg-[#121215] border border-white/[0.08] relative max-w-full">
               {categories.map((c) => {
                 const isActive = activeCategory === c.id;
                 return (
                   <button
                     key={c.id}
                     onClick={() => setActiveCategory(c.id)}
-                    className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold active:scale-[0.97] transition-colors duration-150 cursor-pointer z-10 ${
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold active:scale-[0.97] transition-colors duration-150 cursor-pointer z-10 whitespace-nowrap shrink-0 ${
                       isActive
                         ? "text-[#09090B] font-bold"
                         : "text-zinc-400 hover:text-white"
@@ -229,7 +229,7 @@ export default function Portfolio() {
         </MotionReveal>
 
         {/* Project Cards Grid with Staggered Entrance (Clean 2-Column Studio Showcase) */}
-        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        <StaggerContainer className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10">
           {filtered.map((item) => (
             <StaggerItem key={item.id}>
               <div
@@ -329,17 +329,17 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.95, y: 8 }}
                 transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
                 onClick={(e) => e.stopPropagation()}
-                className="relative w-full max-w-lg rounded-2xl bg-[#0F0F12] border border-white/[0.1] p-6 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(255,255,255,0.08)] space-y-5"
+                className="relative w-full max-w-lg max-h-[88dvh] overflow-y-auto overscroll-contain no-scrollbar rounded-2xl bg-[#0F0F12] border border-white/[0.1] p-5 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(255,255,255,0.08)] space-y-4 sm:space-y-5"
               >
                 <button
                   onClick={() => setModalProject(null)}
-                  className="absolute top-5 right-5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-zinc-400 hover:text-white hover:bg-white/[0.08] active:scale-[0.95] transition-[background-color,color,transform] duration-150 cursor-pointer"
+                  className="absolute top-4 right-4 sm:top-5 sm:right-5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-zinc-400 hover:text-white hover:bg-white/[0.08] active:scale-[0.95] transition-[background-color,color,transform] duration-150 cursor-pointer z-10"
                   aria-label="Tutup modal"
                 >
                   <X className="w-4 h-4" />
                 </button>
 
-                <div className="relative h-44 rounded-xl overflow-hidden mb-2 bg-zinc-950">
+                <div className="relative h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-zinc-950">
                   <Image
                     src={modalProject.image}
                     alt={modalProject.title}

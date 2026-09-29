@@ -131,17 +131,17 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
   };
 
   return (
-    <section id="estimator" className="py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
+    <section id="estimator" className="py-14 sm:py-20 md:py-24 bg-[#09090B] relative overflow-hidden border-t border-white/[0.06]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Section Header */}
         <MotionReveal>
-          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2.5">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-xs font-mono text-amber-300 font-semibold">
+          <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14 space-y-2 sm:space-y-2.5">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.03] border border-white/[0.08] text-[10px] sm:text-xs font-mono text-amber-300 font-semibold">
               <Calculator className="w-3.5 h-3.5 text-amber-400" />
               <span>KALKULATOR ESTIMASI PROYEK</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
-              Hitung Estimasi Biaya & Waktu <span className="gold-gradient-text">Proyek Anda</span>
+            <h2 className="text-xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
+              Hitung Estimasi Biaya &amp; Waktu <span className="gold-gradient-text">Proyek Anda</span>
             </h2>
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed font-normal">
               Pilih parameter kebutuhan bisnis Anda di bawah ini untuk melihat gambaran durasi pengerjaan dan estimasi biaya secara transparan tanpa biaya tersembunyi.
@@ -149,22 +149,22 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
           </div>
         </MotionReveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Controls Column */}
-          <MotionReveal delay={0.05} yOffset={20} className="lg:col-span-7 space-y-7">
+          <MotionReveal delay={0.05} yOffset={20} className="lg:col-span-7 space-y-5 sm:space-y-7">
             {/* Step 1: Pilihan Layanan */}
-            <div className="space-y-3">
-              <label className="text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
+            <div className="space-y-2.5 sm:space-y-3">
+              <label className="text-[10px] sm:text-[11px] font-mono font-bold uppercase tracking-wider text-amber-400 flex items-center gap-2">
                 <span>01 // PILIH JENIS LAYANAN</span>
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
                 {services.map((s) => {
                   const isSelected = serviceType === s.id;
                   return (
                     <button
                       key={s.id}
                       onClick={() => setServiceType(s.id)}
-                      className={`p-3.5 rounded-xl text-left border active:scale-[0.98] transition-[border-color,background-color,box-shadow,transform] duration-200 cursor-pointer ${
+                      className={`p-3 sm:p-3.5 rounded-xl text-left border active:scale-[0.98] transition-[border-color,background-color,box-shadow,transform] duration-200 cursor-pointer ${
                         isSelected
                           ? "bg-amber-400/[0.06] border-amber-400/80 shadow-[0_0_20px_rgba(255,215,0,0.12)] ring-1 ring-amber-400/30"
                           : "bg-[#0F0F12] border-white/[0.08] hover:border-white/[0.18] hover:bg-white/[0.02]"
@@ -174,7 +174,7 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                         <span>{s.name}</span>
                         {isSelected && <Check className="w-3.5 h-3.5 text-amber-400 shrink-0" />}
                       </div>
-                      <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug">{s.desc}</p>
+                      <p className="text-[10px] sm:text-[11px] text-zinc-400 mt-1 leading-snug line-clamp-2">{s.desc}</p>
                     </button>
                   );
                 })}

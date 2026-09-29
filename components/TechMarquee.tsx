@@ -66,44 +66,44 @@ export default function TechMarquee() {
   ];
 
   return (
-    <section className="py-20 bg-[#09090B] border-y border-white/[0.06] relative overflow-hidden">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#09090B] border-y border-white/[0.06] relative overflow-hidden">
       {/* Subtle Ambient Radial Highlight */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[180px] bg-[#FFD700]/[0.03] blur-[120px] pointer-events-none rounded-full" />
 
       {/* Section Header - Clean, Refined Typography */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12 text-center relative z-10">
-        <p className="text-xs font-semibold text-[#D9A900] mb-2">
-          Ekosistem & Teknologi Teruji
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-7 sm:mb-12 text-center relative z-10">
+        <p className="text-[11px] sm:text-xs font-semibold text-[#D9A900] mb-1.5 sm:mb-2">
+          Ekosistem &amp; Teknologi Teruji
         </p>
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-white font-[family-name:var(--font-heading)]">
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-white font-[family-name:var(--font-heading)]">
           Fondasi Rekayasa Perangkat Lunak Berstandar Industri
         </h2>
-        <p className="text-xs sm:text-sm text-zinc-400 mt-2 max-w-lg mx-auto leading-relaxed">
+        <p className="text-xs sm:text-sm text-zinc-400 mt-1.5 sm:mt-2 max-w-lg mx-auto leading-relaxed">
           Setiap sistem dibangun dengan arsitektur modern yang cepat, aman, dan siap menangani pertumbuhan volume transaksi Anda.
         </p>
       </div>
 
       {/* Logo Loop - Floating Framer / React Bits Style */}
       <div className="relative w-full overflow-hidden">
-        {/* Wide Gradient Masks on Edges */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-32 sm:w-56 bg-gradient-to-r from-[#09090B] via-[#09090B]/90 to-transparent z-10" />
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-32 sm:w-56 bg-gradient-to-l from-[#09090B] via-[#09090B]/90 to-transparent z-10" />
+        {/* Wide Gradient Masks on Edges (Narrow on mobile so logos are clearly visible) */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 sm:w-32 md:w-56 bg-gradient-to-r from-[#09090B] via-[#09090B]/90 to-transparent z-10" />
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 sm:w-32 md:w-56 bg-gradient-to-l from-[#09090B] via-[#09090B]/90 to-transparent z-10" />
 
         {/* Row 1 - Left to Right */}
-        <InfiniteSlider gap={24} speed={36} speedOnHover={14} className="py-3">
+        <InfiniteSlider gap={16} speed={36} speedOnHover={14} className="py-2 sm:py-3">
           {row1.map((item, idx) => {
             const Icon = item.Icon;
             return (
               <div
                 key={idx}
                 title={item.name}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-[border-color,background-color] duration-150 ease-out group cursor-default shrink-0"
+                className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-[border-color,background-color] duration-150 ease-out group cursor-default shrink-0"
               >
                 <Icon
-                  size={20}
-                  className={`text-zinc-500 transition-[color,transform] duration-200 ease-out ${item.hoverClass} group-hover:scale-110`}
+                  size={16}
+                  className={`text-zinc-500 transition-[color,transform] duration-200 ease-out ${item.hoverClass} group-hover:scale-110 shrink-0`}
                 />
-                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors duration-150">
+                <span className="text-[11px] sm:text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors duration-150 whitespace-nowrap">
                   {item.name}
                 </span>
               </div>
@@ -112,20 +112,20 @@ export default function TechMarquee() {
         </InfiniteSlider>
 
         {/* Row 2 - Right to Left (Reverse) */}
-        <InfiniteSlider gap={24} speed={32} speedOnHover={14} reverse className="py-3 mt-1">
+        <InfiniteSlider gap={16} speed={32} speedOnHover={14} reverse className="py-2 sm:py-3 mt-1">
           {row2.map((item, idx) => {
             const Icon = item.Icon;
             return (
               <div
                 key={idx}
                 title={item.name}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-[border-color,background-color] duration-150 ease-out group cursor-default shrink-0"
+                className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-4 py-1.5 sm:py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-[border-color,background-color] duration-150 ease-out group cursor-default shrink-0"
               >
                 <Icon
-                  size={20}
-                  className={`text-zinc-500 transition-[color,transform] duration-200 ease-out ${item.hoverClass} group-hover:scale-110`}
+                  size={16}
+                  className={`text-zinc-500 transition-[color,transform] duration-200 ease-out ${item.hoverClass} group-hover:scale-110 shrink-0`}
                 />
-                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors duration-150">
+                <span className="text-[11px] sm:text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors duration-150 whitespace-nowrap">
                   {item.name}
                 </span>
               </div>
