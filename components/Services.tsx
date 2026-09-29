@@ -2,7 +2,8 @@
 
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { MotionReveal, StaggerContainer, StaggerItem } from "@/components/ui/motion-reveal";
+import { MotionReveal } from "@/components/ui/motion-reveal";
+import StackingCards, { StackingCardItem } from "@/components/ui/stacking-cards";
 
 const services = [
   {
@@ -45,9 +46,9 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-16 sm:py-24 md:py-36 bg-[#09090B] relative overflow-hidden border-t border-white/[0.08]">
+    <section id="services" className="py-16 sm:py-24 md:py-36 bg-[#09090B] relative overflow-x-clip border-t border-white/[0.08]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        
+
         {/* Section Header (Clean Studio Editorial Style) */}
         <MotionReveal>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 mb-10 pb-6 sm:mb-16 sm:pb-8 border-b border-white/[0.08]">
@@ -62,43 +63,40 @@ export default function Services() {
             </div>
 
             <p className="text-xs sm:text-sm text-zinc-400 max-w-md leading-relaxed font-normal">
-              Kami mentransformasikan visi bisnis Anda ke dalam produk digital siap rilis — terstruktur dari fondasi arsitektur hingga serah terima source code 100%.
+              Scroll — setiap kartu layanan menumpuk di atas yang sebelumnya sampai semua terlihat.
             </p>
           </div>
         </MotionReveal>
 
-        {/* 2x2 Clean Spacious Grid (No Cramped Card Boxes) */}
-        <StaggerContainer staggerDelay={0.08} className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14">
+        <StackingCards totalCards={services.length} className="relative">
           {services.map((item, idx) => (
-            <StaggerItem key={idx}>
-              <div className="group space-y-4 sm:space-y-6">
-                
-                {/* Visual Showcase Container with Crisp Aspect Ratio */}
-                <div className="relative aspect-[16/10] w-full rounded-xl sm:rounded-2xl overflow-hidden bg-zinc-950 border border-white/[0.08] shadow-[0_12px_32px_rgba(0,0,0,0.5),inset_0_1px_0_0_rgba(255,255,255,0.06)]">
+            <StackingCardItem key={idx} index={idx}>
+              <div className="group grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 rounded-2xl bg-[#101013] border border-white/[0.08] shadow-[0_24px_64px_rgba(0,0,0,0.55)] p-5 sm:p-8 lg:p-12 min-h-[70vh] lg:min-h-[72vh]">
+
+                {/* Visual */}
+                <div className="relative aspect-[16/10] w-full lg:h-[520px] lg:aspect-auto rounded-xl overflow-hidden bg-zinc-950 border border-white/[0.08]">
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    className="object-cover object-center transition-transform duration-500 [transition-timing-function:cubic-bezier(0.23,1,0.32,1)] group-hover:scale-[1.03]"
+                    className="object-cover object-center"
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#09090B]/80 via-transparent to-transparent pointer-events-none" />
-
-                  {/* Corner Number Badge */}
                   <div className="absolute top-3 left-3 sm:top-4 sm:left-4 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/10 font-mono text-[10px] sm:text-[11px] text-amber-300 font-semibold shadow-sm">
                     {item.number} &middot; {item.category}
                   </div>
                 </div>
 
-                {/* Text Description & Metadata */}
-                <div className="space-y-2.5 sm:space-y-3.5">
+                {/* Text */}
+                <div className="space-y-2.5 sm:space-y-3.5 flex flex-col justify-center">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-lg sm:text-2xl font-bold text-white group-hover:text-amber-200 transition-colors duration-200 font-[family-name:var(--font-heading)] tracking-tight">
+                    <h3 className="text-lg sm:text-2xl lg:text-3xl font-bold text-white tracking-tight font-[family-name:var(--font-heading)]">
                       {item.title}
                     </h3>
                     <a
                       href="#contact"
-                      className="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-400 group-hover:text-amber-300 group-hover:border-amber-400/40 group-hover:bg-amber-400/[0.06] transition-[border-color,background-color,color] duration-150 active:scale-95"
+                      className="shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-zinc-400 hover:text-amber-300 hover:border-amber-400/40 hover:bg-amber-400/[0.06] transition-[border-color,background-color,color] duration-150 active:scale-95"
                       aria-label={`Konsultasi ${item.title}`}
                     >
                       <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
@@ -109,7 +107,6 @@ export default function Services() {
                     {item.desc}
                   </p>
 
-                  {/* Pill Tags (Clean Minimalist Capabilities) */}
                   <div className="flex flex-wrap gap-1.5 pt-0.5 sm:pt-1">
                     {item.tags.map((tag, tIdx) => (
                       <span
@@ -121,16 +118,15 @@ export default function Services() {
                     ))}
                   </div>
 
-                  {/* Tech stack line */}
                   <div className="pt-1.5 sm:pt-2 text-[10px] sm:text-[11px] font-mono text-zinc-500">
                     Fondasi: <span className="text-zinc-400">{item.tech}</span>
                   </div>
                 </div>
 
               </div>
-            </StaggerItem>
+            </StackingCardItem>
           ))}
-        </StaggerContainer>
+        </StackingCards>
 
       </div>
     </section>

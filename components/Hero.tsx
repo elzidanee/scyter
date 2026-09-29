@@ -9,6 +9,7 @@ import {
   Users,
   FolderGit2,
 } from "lucide-react";
+import TechText from "./ui/TechText";
 
 interface HeroProps {
   onOpenConsultation?: () => void;
@@ -72,7 +73,27 @@ export default function Hero({ onOpenConsultation }: HeroProps) {
         
         {/* Main Headline & Value Proposition (Clean Editorial Agency Style) */}
         <div className="max-w-4xl mx-auto text-center space-y-4 sm:space-y-6">
-          
+          {/* Interactive wordmark */}
+          <motion.div
+            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.45, ease: EASE_OUT }}
+            className="h-[120px] sm:h-[180px] lg:h-[200px] font-[family-name:var(--font-heading)]"
+          >
+            <TechText
+              text="SCYTERCORP"
+              fontWeight={700}
+              fontSize={150}
+              letterSpacing={-0.03}
+              color="#FFD700"
+              accentColor="#FFE873"
+              reveal="letter"
+              draggable={false}
+              labels={false}
+              specks={8}
+            />
+          </motion.div>
+
           {/* Hero Headline (Clean Responsive Editorial Scale) */}
           <motion.h1
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 16 }}
