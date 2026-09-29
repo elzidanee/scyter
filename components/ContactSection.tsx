@@ -7,7 +7,9 @@ import {
   MapPin,
   CheckCircle2,
   ShieldCheck,
+  Loader2,
 } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { MotionReveal } from "@/components/ui/motion-reveal";
 
 interface ContactSectionProps {
@@ -111,131 +113,158 @@ export default function ContactSection({ initialSummary = "" }: ContactSectionPr
 
           {/* Right Column: Clean Form */}
           <MotionReveal delay={0.15} yOffset={24} className="lg:col-span-7">
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#0F0F12] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)]">
-              {submitted ? (
-                <div className="py-12 text-center space-y-3.5">
-                  <div className="w-14 h-14 rounded-full bg-emerald-400/10 border border-emerald-400/30 mx-auto flex items-center justify-center text-emerald-400">
-                    <CheckCircle2 className="w-7 h-7" />
-                  </div>
-                  <h3 className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
-                    Pesan Anda Berhasil Terkirim!
-                  </h3>
-                  <p className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto leading-relaxed">
-                    Terima kasih telah menghubungi ScyterCorp. Tim kami akan segera menindaklanjuti pesan Anda via WhatsApp atau Email.
-                  </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.08] transition-colors cursor-pointer"
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#0F0F12] border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.7),inset_0_1px_0_0_rgba(255,255,255,0.06)] min-h-[460px] flex flex-col justify-center">
+              <AnimatePresence mode="wait">
+                {submitted ? (
+                  <motion.div
+                    key="success"
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                    className="py-12 text-center space-y-3.5"
                   >
-                    Kirim Pesan Lain
-                  </button>
-                </div>
-              ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-zinc-300">Nama Lengkap *</label>
-                      <input
-                        type="text"
-                        inputMode="text"
-                        required
-                        placeholder="Contoh: Budi Santoso"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
-                      />
+                    <div className="w-14 h-14 rounded-full bg-emerald-400/10 border border-emerald-400/30 mx-auto flex items-center justify-center text-emerald-400">
+                      <CheckCircle2 className="w-7 h-7" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
+                      Pesan Anda Berhasil Terkirim!
+                    </h3>
+                    <p className="text-xs sm:text-sm text-zinc-400 max-w-sm mx-auto leading-relaxed">
+                      Terima kasih telah menghubungi ScyterCorp. Tim kami akan segera menindaklanjuti pesan Anda via WhatsApp atau Email.
+                    </p>
+                    <button
+                      onClick={() => setSubmitted(false)}
+                      className="px-5 py-2.5 rounded-xl text-xs font-semibold text-white bg-white/[0.04] border border-white/[0.1] hover:bg-white/[0.08] active:scale-[0.97] transition-[background-color,transform] duration-150 cursor-pointer"
+                    >
+                      Kirim Pesan Lain
+                    </button>
+                  </motion.div>
+                ) : (
+                  <motion.form
+                    key="form"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.98 }}
+                    transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                    onSubmit={handleSubmit}
+                    className="space-y-4"
+                  >
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-medium text-zinc-300">Nama Lengkap *</label>
+                        <input
+                          type="text"
+                          inputMode="text"
+                          autoComplete="name"
+                          required
+                          placeholder="Contoh: Budi Santoso"
+                          value={formData.name}
+                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/30 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-medium text-zinc-300">Nomor WhatsApp / HP *</label>
+                        <input
+                          type="tel"
+                          inputMode="tel"
+                          autoComplete="tel"
+                          required
+                          placeholder="0812-xxxx-xxxx"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/30 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-medium text-zinc-300">Email Perusahaan / Pribadi</label>
+                        <input
+                          type="email"
+                          inputMode="email"
+                          autoComplete="email"
+                          placeholder="nama@perusahaan.com"
+                          value={formData.email}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/30 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
+                        />
+                      </div>
+
+                      <div className="space-y-1.5">
+                        <label className="text-xs font-medium text-zinc-300">Pilihan Layanan</label>
+                        <select
+                          value={formData.serviceType}
+                          onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
+                          className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/30 transition-[border-color,box-shadow] duration-150"
+                        >
+                          <option>Pembuatan Website</option>
+                          <option>Pembuatan Mobile App</option>
+                          <option>UI/UX Design</option>
+                          <option>Sistem Kasir (POS)</option>
+                          <option>Custom CMS</option>
+                          <option>LMS Edukasi & Kursus</option>
+                          <option>PMS Properti & Proyek</option>
+                          <option>Sistem Kustom Lainnya</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-zinc-300">Nomor WhatsApp / HP *</label>
-                      <input
-                        type="tel"
-                        inputMode="tel"
-                        required
-                        placeholder="0812-xxxx-xxxx"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-zinc-300">Email Perusahaan / Pribadi</label>
-                      <input
-                        type="email"
-                        inputMode="email"
-                        placeholder="nama@perusahaan.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 transition-[border-color,box-shadow] duration-150"
-                      />
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <label className="text-xs font-medium text-zinc-300">Pilihan Layanan</label>
+                      <label className="text-xs font-medium text-zinc-300">Perkiraan Anggaran</label>
                       <select
-                        value={formData.serviceType}
-                        onChange={(e) => setFormData({ ...formData, serviceType: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 transition-[border-color,box-shadow] duration-150"
+                        value={formData.budget}
+                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/30 transition-[border-color,box-shadow] duration-150"
                       >
-                        <option>Pembuatan Website</option>
-                        <option>Pembuatan Mobile App</option>
-                        <option>UI/UX Design</option>
-                        <option>Sistem Kasir (POS)</option>
-                        <option>Custom CMS</option>
-                        <option>LMS Edukasi & Kursus</option>
-                        <option>PMS Properti & Proyek</option>
-                        <option>Sistem Kustom Lainnya</option>
+                        <option>&lt; Rp 5 Juta</option>
+                        <option>Rp 5 Juta – Rp 15 Juta</option>
+                        <option>Rp 15 Juta – Rp 35 Juta</option>
+                        <option>&gt; Rp 35 Juta</option>
                       </select>
                     </div>
-                  </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-zinc-300">Perkiraan Anggaran</label>
-                    <select
-                      value={formData.budget}
-                      onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-[#141417] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 transition-[border-color,box-shadow] duration-150"
+                    <div className="space-y-1.5">
+                      <label className="text-xs font-medium text-zinc-300">
+                        Deskripsi Kebutuhan Singkat
+                      </label>
+                      <textarea
+                        rows={3}
+                        placeholder="Ceritakan fitur atau gambaran aplikasi/website yang ingin Anda bangun..."
+                        value={formData.description}
+                        onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/30 placeholder:text-zinc-600 resize-none transition-[border-color,box-shadow] duration-150"
+                      />
+                    </div>
+
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer disabled:opacity-60 flex items-center justify-center gap-2"
+                      style={{
+                        background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
+                      }}
                     >
-                      <option>&lt; Rp 5 Juta</option>
-                      <option>Rp 5 Juta – Rp 15 Juta</option>
-                      <option>Rp 15 Juta – Rp 35 Juta</option>
-                      <option>&gt; Rp 35 Juta</option>
-                    </select>
-                  </div>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin text-[#09090B]" />
+                          <span>Mengirim Pesan...</span>
+                        </>
+                      ) : (
+                        <span>Kirim Pesan Konsultasi</span>
+                      )}
+                    </button>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-medium text-zinc-300">
-                      Deskripsi Kebutuhan Singkat
-                    </label>
-                    <textarea
-                      rows={3}
-                      placeholder="Ceritakan fitur atau gambaran aplikasi/website yang ingin Anda bangun..."
-                      value={formData.description}
-                      onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] text-white text-base focus:outline-none focus:border-amber-400/80 focus:ring-1 focus:ring-amber-400/20 placeholder:text-zinc-600 resize-none transition-[border-color,box-shadow] duration-150"
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full py-3.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-[#09090B] transition-[transform,filter] duration-150 hover:brightness-105 active:scale-[0.97] shadow-[0_2px_16px_rgba(255,215,0,0.3),inset_0_1px_0_0_rgba(255,255,255,0.7)] cursor-pointer disabled:opacity-50"
-                    style={{
-                      background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
-                    }}
-                  >
-                    {isSubmitting ? "Mengirim Pesan..." : "Kirim Pesan Konsultasi"}
-                  </button>
-
-                  <div className="flex items-center justify-center gap-1.5 text-[11px] text-zinc-500 pt-1">
-                    <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                    <span>Data Anda terlindungi & terikat kerahasiaan non-disclosure.</span>
-                  </div>
-                </form>
-              )}
+                    <div className="flex items-center justify-center gap-1.5 text-[11px] text-zinc-500 pt-1">
+                      <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                      <span>Data Anda terlindungi & terikat kerahasiaan non-disclosure.</span>
+                    </div>
+                  </motion.form>
+                )}
+              </AnimatePresence>
             </div>
           </MotionReveal>
         </div>

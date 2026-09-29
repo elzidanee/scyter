@@ -11,6 +11,42 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { MotionReveal } from "@/components/ui/motion-reveal";
+import { AnimatedNumber } from "@/components/ui/animated-number";
+
+const services = [
+  { id: "web", name: "Website", desc: "Company Profile, Landing Page, Portal", baseWeeks: 2, baseCost: 4 },
+  { id: "app", name: "Mobile App", desc: "Aplikasi Android / iOS Flutter", baseWeeks: 4, baseCost: 10 },
+  { id: "uiux", name: "UI/UX Design", desc: "Desain Figma & Prototype Interaktif", baseWeeks: 2, baseCost: 3 },
+  { id: "pos", name: "Kasir (POS)", desc: "Sistem Kasir, Struk & Stok Barang", baseWeeks: 3, baseCost: 7 },
+  { id: "cms", name: "Custom CMS", desc: "Pengelolaan Konten, Berita & Produk", baseWeeks: 3, baseCost: 6 },
+  { id: "lms", name: "LMS Edukasi", desc: "Kelas Online, Video, Ujian & Sertifikat", baseWeeks: 4, baseCost: 9 },
+  { id: "pms", name: "PMS Properti/Proyek", desc: "Sewa Kos/Hotel & Monitoring Proyek", baseWeeks: 4, baseCost: 9 },
+];
+
+const tiers = [
+  {
+    id: "starter",
+    name: "Paket Standar",
+    desc: "Fitur esensial siap pakai untuk memulai digitalisasi bisnis dengan cepat.",
+    multiplier: 1.0,
+    weeksAdd: 0,
+  },
+  {
+    id: "pro",
+    name: "Paket Lengkap / Kustom Pro",
+    desc: "Fitur lebih mendalam, kustomisasi alur bisnis, laporan lengkap & automasi.",
+    multiplier: 1.6,
+    weeksAdd: 2,
+  },
+];
+
+const addons = [
+  { id: "payment", name: "Payment Gateway (QRIS & Transfer Otomatis)", weeks: 0.5, cost: 1.5 },
+  { id: "wa", name: "Notifikasi Otomatis WhatsApp Gateway", weeks: 0.5, cost: 1 },
+  { id: "admin", name: "Panel Admin & Ekspor Laporan Excel/PDF", weeks: 0.5, cost: 1 },
+  { id: "domain", name: "Setup Domain, Server Cloud & SSL 1 Tahun", weeks: 0, cost: 1 },
+  { id: "store", name: "Bantuan Rilis Akun Google Play / App Store", weeks: 0.5, cost: 1.5 },
+];
 
 interface ProjectEstimatorProps {
   onProceedToForm?: (summary: string) => void;
@@ -28,41 +64,6 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
     "admin",
     "domain",
   ]);
-
-  const services = [
-    { id: "web", name: "Website", desc: "Company Profile, Landing Page, Portal", baseWeeks: 2, baseCost: 4 },
-    { id: "app", name: "Mobile App", desc: "Aplikasi Android / iOS Flutter", baseWeeks: 4, baseCost: 10 },
-    { id: "uiux", name: "UI/UX Design", desc: "Desain Figma & Prototype Interaktif", baseWeeks: 2, baseCost: 3 },
-    { id: "pos", name: "Kasir (POS)", desc: "Sistem Kasir, Struk & Stok Barang", baseWeeks: 3, baseCost: 7 },
-    { id: "cms", name: "Custom CMS", desc: "Pengelolaan Konten, Berita & Produk", baseWeeks: 3, baseCost: 6 },
-    { id: "lms", name: "LMS Edukasi", desc: "Kelas Online, Video, Ujian & Sertifikat", baseWeeks: 4, baseCost: 9 },
-    { id: "pms", name: "PMS Properti/Proyek", desc: "Sewa Kos/Hotel & Monitoring Proyek", baseWeeks: 4, baseCost: 9 },
-  ];
-
-  const tiers = [
-    {
-      id: "starter",
-      name: "Paket Standar",
-      desc: "Fitur esensial siap pakai untuk memulai digitalisasi bisnis dengan cepat.",
-      multiplier: 1.0,
-      weeksAdd: 0,
-    },
-    {
-      id: "pro",
-      name: "Paket Lengkap / Kustom Pro",
-      desc: "Fitur lebih mendalam, kustomisasi alur bisnis, laporan lengkap & automasi.",
-      multiplier: 1.6,
-      weeksAdd: 2,
-    },
-  ];
-
-  const addons = [
-    { id: "payment", name: "Payment Gateway (QRIS & Transfer Otomatis)", weeks: 0.5, cost: 1.5 },
-    { id: "wa", name: "Notifikasi Otomatis WhatsApp Gateway", weeks: 0.5, cost: 1 },
-    { id: "admin", name: "Panel Admin & Ekspor Laporan Excel/PDF", weeks: 0.5, cost: 1 },
-    { id: "domain", name: "Setup Domain, Server Cloud & SSL 1 Tahun", weeks: 0, cost: 1 },
-    { id: "store", name: "Bantuan Rilis Akun Google Play / App Store", weeks: 0.5, cost: 1.5 },
-  ];
 
   const toggleAddon = (id: string) => {
     setSelectedAddons((prev) =>
@@ -261,15 +262,18 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                 </span>
               </div>
 
-              {/* Duration and Cost cards */}
+              {/* Duration and Cost cards with Animated Numbers */}
               <div className="grid grid-cols-2 gap-3">
                 <div className="p-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06]">
                   <div className="flex items-center gap-1.5 text-xs text-zinc-400 mb-1">
                     <Calendar className="w-3.5 h-3.5 text-amber-400" />
                     <span>Durasi Kerja</span>
                   </div>
-                  <div className="text-xl font-bold text-white font-[family-name:var(--font-heading)]">
-                    {calculation.minWeeks} – {calculation.maxWeeks} <span className="text-xs font-normal text-zinc-400">Minggu</span>
+                  <div className="text-xl font-bold text-white font-[family-name:var(--font-heading)] flex items-baseline gap-1">
+                    <AnimatedNumber value={calculation.minWeeks} />
+                    <span>–</span>
+                    <AnimatedNumber value={calculation.maxWeeks} />
+                    <span className="text-xs font-normal text-zinc-400 ml-1">Minggu</span>
                   </div>
                 </div>
 
@@ -278,8 +282,11 @@ export default function ProjectEstimator({ onProceedToForm }: ProjectEstimatorPr
                     <Layers className="w-3.5 h-3.5 text-emerald-400" />
                     <span>Perkiraan Biaya</span>
                   </div>
-                  <div className="text-xl font-bold text-amber-300 font-[family-name:var(--font-heading)]">
-                    {calculation.minCost} – {calculation.maxCost} <span className="text-xs font-normal text-amber-200/80">Juta</span>
+                  <div className="text-xl font-bold text-amber-300 font-[family-name:var(--font-heading)] flex items-baseline gap-1">
+                    <AnimatedNumber value={calculation.minCost} />
+                    <span>–</span>
+                    <AnimatedNumber value={calculation.maxCost} />
+                    <span className="text-xs font-normal text-amber-200/80 ml-1">Juta</span>
                   </div>
                 </div>
               </div>

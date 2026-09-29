@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ArrowRight, CheckCircle2, X, ExternalLink } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
 import { MotionReveal, StaggerContainer, StaggerItem } from "@/components/ui/motion-reveal";
 
 interface ProjectItem {
@@ -23,6 +24,21 @@ interface ProjectItem {
 export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [modalProject, setModalProject] = useState<ProjectItem | null>(null);
+
+  useEffect(() => {
+    if (modalProject) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Escape") setModalProject(null);
+      };
+      window.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [modalProject]);
 
   const projects: ProjectItem[] = [
     {
@@ -184,20 +200,30 @@ export default function Portfolio() {
             </div>
 
             {/* Category Filter Segmented Control */}
-            <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-[#121215] border border-white/[0.08]">
-              {categories.map((c) => (
-                <button
-                  key={c.id}
-                  onClick={() => setActiveCategory(c.id)}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold active:scale-[0.97] transition-[background-color,color,transform] duration-150 cursor-pointer ${
-                    activeCategory === c.id
-                      ? "bg-amber-400 text-[#09090B] shadow-sm font-bold"
-                      : "text-zinc-400 hover:text-white hover:bg-white/[0.04]"
-                  }`}
-                >
-                  {c.label}
-                </button>
-              ))}
+            <div className="flex flex-wrap gap-1 p-1 rounded-xl bg-[#121215] border border-white/[0.08] relative">
+              {categories.map((c) => {
+                const isActive = activeCategory === c.id;
+                return (
+                  <button
+                    key={c.id}
+                    onClick={() => setActiveCategory(c.id)}
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-semibold active:scale-[0.97] transition-colors duration-150 cursor-pointer z-10 ${
+                      isActive
+                        ? "text-[#09090B] font-bold"
+                        : "text-zinc-400 hover:text-white"
+                    }`}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activePortfolioFilter"
+                        className="absolute inset-0 bg-amber-400 rounded-lg shadow-sm -z-10"
+                        transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                      />
+                    )}
+                    {c.label}
+                  </button>
+                );
+              })}
             </div>
           </div>
         </MotionReveal>
@@ -295,83 +321,99 @@ export default function Portfolio() {
           ))}
         </StaggerContainer>
 
-        {/* Modal Detail View */}
-        {modalProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-            <div className="relative w-full max-w-lg rounded-2xl bg-[#0F0F12] border border-white/[0.1] p-6 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(255,255,255,0.08)] space-y-5">
-              <button
-                onClick={() => setModalProject(null)}
-                className="absolute top-5 right-5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-zinc-400 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer"
-                aria-label="Tutup modal"
+        {/* Modal Detail View with Emil Kowalski Standard Animation & AnimatePresence */}
+        <AnimatePresence>
+          {modalProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+              onClick={() => setModalProject(null)}
+            >
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, y: 8 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 8 }}
+                transition={{ duration: 0.22, ease: [0.23, 1, 0.32, 1] }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full max-w-lg rounded-2xl bg-[#0F0F12] border border-white/[0.1] p-6 sm:p-7 shadow-[0_24px_60px_rgba(0,0,0,0.85),inset_0_1px_0_0_rgba(255,255,255,0.08)] space-y-5"
               >
-                <X className="w-4 h-4" />
-              </button>
-
-              <div className="relative h-44 rounded-xl overflow-hidden mb-2 bg-zinc-950">
-                <Image
-                  src={modalProject.image}
-                  alt={modalProject.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent" />
-              </div>
-
-              <div>
-                <span
-                  className="px-2.5 py-1 rounded text-xs font-mono font-bold inline-block"
-                  style={{
-                    background: `${modalProject.accent}15`,
-                    border: `1px solid ${modalProject.accent}30`,
-                    color: modalProject.accent,
-                  }}
-                >
-                  {modalProject.categoryLabel}
-                </span>
-                <h3 className="text-xl font-bold text-white mt-2 font-[family-name:var(--font-heading)]">
-                  {modalProject.title}
-                </h3>
-                <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{modalProject.tagline}</p>
-              </div>
-
-              <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
-                {modalProject.summary}
-              </p>
-
-              <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2.5">
-                <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
-                  Spesifikasi Fitur Utama:
-                </div>
-                {modalProject.features.map((f, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
-                    <span>{f}</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-between text-xs font-mono text-zinc-400">
-                <span>TECH STACK:</span>
-                <span className="text-zinc-200">{modalProject.tech}</span>
-              </div>
-
-              <div className="pt-2 flex items-center justify-between">
-                <span className="text-xs text-zinc-400">Ingin sistem serupa?</span>
-                <a
-                  href="#contact"
+                <button
                   onClick={() => setModalProject(null)}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[#09090B] font-bold text-xs hover:brightness-105 active:scale-[0.97] transition-[filter,transform] duration-150 cursor-pointer shadow-sm"
-                  style={{
-                    background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
-                  }}
+                  className="absolute top-5 right-5 p-2 rounded-lg bg-white/[0.04] border border-white/[0.08] text-zinc-400 hover:text-white hover:bg-white/[0.08] active:scale-[0.95] transition-[background-color,color,transform] duration-150 cursor-pointer"
+                  aria-label="Tutup modal"
                 >
-                  <span>Konsultasi Proyek Ini</span>
-                  <ExternalLink className="w-3.5 h-3.5" />
-                </a>
-              </div>
-            </div>
-          </div>
-        )}
+                  <X className="w-4 h-4" />
+                </button>
+
+                <div className="relative h-44 rounded-xl overflow-hidden mb-2 bg-zinc-950">
+                  <Image
+                    src={modalProject.image}
+                    alt={modalProject.title}
+                    fill
+                    className="object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F0F12] via-transparent to-transparent" />
+                </div>
+
+                <div>
+                  <span
+                    className="px-2.5 py-1 rounded text-xs font-mono font-bold inline-block"
+                    style={{
+                      background: `${modalProject.accent}15`,
+                      border: `1px solid ${modalProject.accent}30`,
+                      color: modalProject.accent,
+                    }}
+                  >
+                    {modalProject.categoryLabel}
+                  </span>
+                  <h3 className="text-xl font-bold text-white mt-2 font-[family-name:var(--font-heading)]">
+                    {modalProject.title}
+                  </h3>
+                  <p className="text-xs text-zinc-400 mt-1 leading-relaxed">{modalProject.tagline}</p>
+                </div>
+
+                <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-normal">
+                  {modalProject.summary}
+                </p>
+
+                <div className="p-4 rounded-xl bg-white/[0.02] border border-white/[0.06] space-y-2.5">
+                  <div className="text-xs font-bold text-white uppercase tracking-wider font-mono">
+                    Spesifikasi Fitur Utama:
+                  </div>
+                  {modalProject.features.map((f, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-zinc-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 mt-0.5 shrink-0" />
+                      <span>{f}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="p-3 rounded-lg bg-white/[0.02] border border-white/[0.05] flex items-center justify-between text-xs font-mono text-zinc-400">
+                  <span>TECH STACK:</span>
+                  <span className="text-zinc-200">{modalProject.tech}</span>
+                </div>
+
+                <div className="pt-2 flex items-center justify-between">
+                  <span className="text-xs text-zinc-400">Ingin sistem serupa?</span>
+                  <a
+                    href="#contact"
+                    onClick={() => setModalProject(null)}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-[#09090B] font-bold text-xs hover:brightness-105 active:scale-[0.97] transition-[filter,transform] duration-150 cursor-pointer shadow-sm"
+                    style={{
+                      background: "linear-gradient(180deg, #FFFCE6 0%, #FFE566 45%, #FFD700 100%)",
+                    }}
+                  >
+                    <span>Konsultasi Proyek Ini</span>
+                    <ExternalLink className="w-3.5 h-3.5" />
+                  </a>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </section>

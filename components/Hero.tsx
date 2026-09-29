@@ -1,14 +1,12 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react";
 import {
   ArrowRight,
   ShieldCheck,
   Code2,
   Users,
-  CheckCircle2,
   FolderGit2,
   Globe,
   Smartphone,

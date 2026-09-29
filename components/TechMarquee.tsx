@@ -97,13 +97,13 @@ export default function TechMarquee() {
               <div
                 key={idx}
                 title={item.name}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-all duration-300 group cursor-default shrink-0"
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-[border-color,background-color] duration-150 ease-out group cursor-default shrink-0"
               >
                 <Icon
                   size={20}
-                  className={`text-zinc-500 transition-colors duration-300 ${item.hoverClass} group-hover:scale-110`}
+                  className={`text-zinc-500 transition-[color,transform] duration-200 ease-out ${item.hoverClass} group-hover:scale-110`}
                 />
-                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors">
+                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors duration-150">
                   {item.name}
                 </span>
               </div>
@@ -119,13 +119,13 @@ export default function TechMarquee() {
               <div
                 key={idx}
                 title={item.name}
-                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-all duration-300 group cursor-default shrink-0"
+                className="flex items-center gap-2.5 px-4 py-2.5 rounded-full bg-white/[0.02] border border-white/[0.06] hover:border-[#FFD700]/40 hover:bg-white/[0.05] transition-[border-color,background-color] duration-150 ease-out group cursor-default shrink-0"
               >
                 <Icon
                   size={20}
-                  className={`text-zinc-500 transition-colors duration-300 ${item.hoverClass} group-hover:scale-110`}
+                  className={`text-zinc-500 transition-[color,transform] duration-200 ease-out ${item.hoverClass} group-hover:scale-110`}
                 />
-                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors">
+                <span className="text-xs font-medium text-zinc-400 group-hover:text-zinc-100 transition-colors duration-150">
                   {item.name}
                 </span>
               </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CheckCircle2, ArrowUpRight, Cpu } from "lucide-react";
+import { CheckCircle2, Cpu } from "lucide-react";
 import { MotionReveal, StaggerContainer, StaggerItem } from "@/components/ui/motion-reveal";
 
 interface SystemModule {
@@ -132,15 +132,6 @@ export default function TrustBar() {
             </StaggerItem>
           ))}
         </StaggerContainer>
-                    <CheckCircle2 className="w-3 h-3 text-[#2ECC71] shrink-0" />
-                    <span className="truncate">{f}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
       </div>
     </section>
   );
