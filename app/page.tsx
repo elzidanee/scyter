@@ -16,16 +16,23 @@ import Footer from "@/components/Footer";
 
 export default function Home() {
   const [inquirySummary, setInquirySummary] = useState<string>("");
+  const [isContactOpen, setIsContactOpen] = useState<boolean>(false);
 
   const handleOpenConsultation = () => {
-    const el = document.getElementById("contact");
-    el?.scrollIntoView({ behavior: "smooth" });
+    setIsContactOpen(true);
+    setTimeout(() => {
+      const el = document.getElementById("contact");
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 450);
   };
 
   const handleProceedToForm = (summary: string) => {
     setInquirySummary(summary);
-    const el = document.getElementById("contact");
-    el?.scrollIntoView({ behavior: "smooth" });
+    setIsContactOpen(true);
+    setTimeout(() => {
+      const el = document.getElementById("contact");
+      el?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 450);
   };
 
   return (
@@ -36,7 +43,7 @@ export default function Home() {
       {/* Sticky Global Navigation */}
       <Navbar onOpenConsultation={handleOpenConsultation} />
 
-      {/* Main Content Sections - Clen, Professional & Linear */}
+      {/* Main Content Sections - Clean, Professional & Linear */}
       <main className="flex-1">
         {/* 1. Hero: Clear Value Proposition & Engineering Commitments */}
         <Hero onOpenConsultation={handleOpenConsultation} />
@@ -47,23 +54,28 @@ export default function Home() {
         {/* 3. Core Services: Web, Mobile, UI/UX, & Custom Systems */}
         <Services />
 
-        {/* 4. 3D Illustrated Architecture & Ownership Showcase (Reference Style) */}
+        {/* 4. 3D Illustrated Architecture & Ownership Showcase */}
         <FeaturesShowcase />
 
         {/* 5. Portfolio: Real Case Studies & Proof of Work */}
         <Portfolio />
 
-        {/* 5. Project Estimator: Transparent Timeline & Cost Calculator */}
+        {/* 6. Project Estimator: Transparent Timeline & Cost Calculator */}
         <ProjectEstimator onProceedToForm={handleProceedToForm} />
 
-        {/* 6. Methodology: Disciplined 4-Stage Development Workflow */}
+        {/* 7. Methodology: Disciplined 4-Stage Development Workflow */}
         <Methodology />
 
-        {/* 7. FAQ: Clear Answers to Client Questions */}
+        {/* 8. FAQ: Clear Answers to Client Questions */}
         <FAQ />
 
-        {/* 8. Contact: Direct WhatsApp & Consultation Form */}
-        <ContactSection initialSummary={inquirySummary} />
+        {/* 9. Contact: Shared Morphing Card (CTA <-> Consultation Interface) */}
+        <ContactSection
+          initialSummary={inquirySummary}
+          isOpen={isContactOpen}
+          onClose={() => setIsContactOpen(false)}
+          onAutoOpen={() => setIsContactOpen(true)}
+        />
       </main>
 
       {/* Corporate Enterprise Footer */}
